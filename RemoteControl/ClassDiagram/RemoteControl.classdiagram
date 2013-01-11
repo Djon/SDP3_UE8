@@ -5,14 +5,37 @@
       <elementDefinition Id="acc8ca72-9e61-4975-906b-a523b7dd9806" />
       <body>stereanlage bei open und close auch nur device?</body>
     </comment>
-    <comment Id="be574439-134f-41ff-9565-05ea5dec6674">
-      <elementDefinition Id="b2e0acf2-4e8d-4538-ad95-72ae643b6232" />
-      <body>richtig verbinden fehlt noch</body>
+    <comment Id="ba09fc00-ac36-42dd-a383-d06d9b36a1e1">
+      <elementDefinition Id="9a4b80ae-6b94-4477-8311-8ee014905736" />
+      <body>bei SetCommands überprüfen ob commands zulässig</body>
+    </comment>
+    <comment Id="4d7d263e-c95c-494f-8628-52aa0c93f6fb">
+      <elementDefinition Id="fdcba7a1-7f98-476a-887b-021fb181cffd" />
+      <body>mLastCommand von Slot nach RemoteControl verschoben,
+mLastPressedButton gelöscht
+weil: im Command ist device gespeichert</body>
+    </comment>
+    <comment Id="5ffaa86b-b918-4f4d-92db-cb967137a490">
+      <elementDefinition Id="b4e4d237-00c9-4fc3-824c-1dd15b125e91" />
+      <body>bei On/OffButtonPressed
+wir das jeweilige command vom slot im LastCommand gespeichert</body>
+    </comment>
+    <comment Id="a0d9aee6-b8ac-415c-8581-875c0804c3c6">
+      <elementDefinition Id="e21c87a8-52b9-42d4-a9f2-ffe5e08c1fda" />
+      <body>mLastState von Commands nach Device verschoben</body>
+    </comment>
+    <comment Id="4d0f41da-887f-458b-9ba7-9faaae48f8c5">
+      <elementDefinition Id="8d3bf061-0440-4f85-b2ac-55c3ad70d36c" />
+      <body>wenn UndoButtonPressed dann mLastCommand auf 0 setzen weil nur einmal UndoButtonPressed sein darf</body>
+    </comment>
+    <comment Id="a6bf7437-28cd-43b9-981b-d8eb0200628b">
+      <elementDefinition Id="5563f6ff-9078-450c-ac01-4c68f52246fa" />
+      <body>Im Konstruktor werden States auf Off gesetzt</body>
     </comment>
   </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
-      <class Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" name="Object" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" name="Object" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="6cf5b861-11bd-41c0-b478-d24eb08145a8" />
         <ownedOperationsInternal>
           <operation Id="ed156dc1-7b04-4ac8-b260-9ee12e7dc12f" name="~Object" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
@@ -200,16 +223,16 @@
           </association>
         </targetEnds>
         <ownedAttributesInternal>
-          <property Id="255f0e9c-4126-46c4-b95f-706409f12e09" name="mLastPressedButton" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="0245dcb6-798c-4a83-a5f6-c32062a06709" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="948672b6-b9c3-4017-befb-d54f87a625e5" LastKnownName="size_t" />
-            </type_NamedElement>
-          </property>
           <property Id="a84dd9a6-340f-4b50-be03-d203d48fecdc" name="mSlots" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="e31b76ce-0885-45c2-bbd4-35adc6312579" />
             <type_NamedElement>
               <referencedTypeMoniker Id="08b67366-93af-4b3b-aaeb-df20c5a60960" LastKnownName="vector&lt;Slot*&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="d7505120-6a79-4422-a27c-dbe9137afc48" name="mLastCommand" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8bb1c91c-2342-49bc-adbc-609104734108" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f89e8e37-234b-4274-8c2f-74e140deff65" LastKnownName="ICommand*" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -362,7 +385,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="0a0bf67f-935b-416a-a6eb-fcd851fed2d5" name="NoCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="0a0bf67f-935b-416a-a6eb-fcd851fed2d5" name="NoCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="97d6ea3f-105f-4985-8aff-3dbd5ee801cf" />
         <suppliersInternal>
           <interfaceRealization Id="4a0fc533-1352-49f8-a73d-5b906329515f">
@@ -412,7 +435,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="cc7b7822-0629-49c1-8b7d-a5e29bcefa3a" name="OnCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="cc7b7822-0629-49c1-8b7d-a5e29bcefa3a" name="OnCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="208f3600-1fd9-49c4-ae34-ec3e188743fc" />
         <suppliersInternal>
           <interfaceRealization Id="3270cbbe-aa43-47c2-9023-3f2c1b987864">
@@ -449,12 +472,6 @@
             <elementDefinition Id="0e0c648b-f86b-4bb0-b51a-90ef5ddef309" />
             <type_NamedElement>
               <referencedTypeMoniker Id="258c3419-7128-424a-94c2-473c651fba33" LastKnownName="BaseDevice*" />
-            </type_NamedElement>
-          </property>
-          <property Id="5b6925a4-796f-4104-9063-5ab441e84755" name="mLastState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="b361da5f-8c10-4558-b8b7-2d4abf4dd321" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="039e4989-0e37-4ba8-af20-ca063f78baea" LastKnownName="OnOffState" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -494,7 +511,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="5e6be40c-033f-4420-9dda-0a76a995ec6c" name="OffCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="5e6be40c-033f-4420-9dda-0a76a995ec6c" name="OffCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="f97d6a89-f9d2-41a9-acc2-ea8dba567ec1" />
         <suppliersInternal>
           <interfaceRealization Id="2ea35024-4cb7-46ab-9339-904b228f933b">
@@ -531,12 +548,6 @@
             <elementDefinition Id="22a4419d-a3c4-43fe-9bd9-5e5ec421c7a8" />
             <type_NamedElement>
               <referencedTypeMoniker Id="07af4084-4dbe-4bf2-9f95-4bfa58ba6eaf" LastKnownName="BaseDevice*" />
-            </type_NamedElement>
-          </property>
-          <property Id="619e7e36-7270-4a9a-b7e3-f9a0d82c7f75" name="mLastState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="5653c758-f496-4340-8ff3-603dbb8fe194" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="79feeedd-e364-43cf-8465-dde97d92222b" LastKnownName="OnOffState" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -576,7 +587,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="bc935afd-68d3-4833-ba59-bfc4886775e6" name="OpenCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="bc935afd-68d3-4833-ba59-bfc4886775e6" name="OpenCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="cda52c15-dfc3-4248-b34b-8b37a45ad53f" />
         <suppliersInternal>
           <interfaceRealization Id="eb09d66e-bf17-4b85-8d95-7e7412edf33e">
@@ -613,12 +624,6 @@
             <elementDefinition Id="c4cccf54-313f-4190-98b3-c57eba8ebf18" />
             <type_NamedElement>
               <referencedTypeMoniker Id="4ae0194b-f573-419c-8418-fd4a3cf5b887" LastKnownName="Stereo*" />
-            </type_NamedElement>
-          </property>
-          <property Id="8406ab7d-5369-4ada-a2b0-fa83c4b0b36c" name="mLastDriveState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="bb837092-05ac-46cb-b126-346e1b11c9da" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="0929aa04-4c5e-44ba-a80f-f6112d06e885" LastKnownName="CDState" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -658,7 +663,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="d323b3e7-58c7-4dc5-a964-dfeaa549bac1" name="CloseCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="d323b3e7-58c7-4dc5-a964-dfeaa549bac1" name="CloseCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="4f35dfa8-2e76-42e7-88e4-2e8f73469a02" />
         <suppliersInternal>
           <interfaceRealization Id="4345f0fa-5a0c-4e72-a632-72af5820df13">
@@ -695,12 +700,6 @@
             <elementDefinition Id="ff1d0f31-030f-4eda-87c8-12c6e0062f56" />
             <type_NamedElement>
               <referencedTypeMoniker Id="851b8fae-a21d-4613-9355-f4876433e893" LastKnownName="Stereo*" />
-            </type_NamedElement>
-          </property>
-          <property Id="58471963-8d5a-430a-83df-b38b6f0afac8" name="mLastDriveState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="5c23321c-a353-412d-9774-532d210a176e" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="c24dc580-2651-4ece-afdd-1f9a3747f2c8" LastKnownName="CDState" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -740,7 +739,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="82cc8502-2a10-44b7-acc2-c258194daf31" name="MacroCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="82cc8502-2a10-44b7-acc2-c258194daf31" name="MacroCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="2cb3a83e-0374-4bd1-a3b6-9c59baa9d4f9" />
         <suppliersInternal>
           <interfaceRealization Id="5490bb8c-3f05-4b29-b8f3-f054aced303c">
@@ -911,12 +910,6 @@
               <referencedTypeMoniker Id="566e9493-93e5-4746-afbf-8b856ccc5fb0" LastKnownName="ICommand*" />
             </type_NamedElement>
           </property>
-          <property Id="92ce64b2-d713-4c0a-ba18-e174b2ab121b" name="mLastCommand" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="592f02cf-5137-4dd4-bf79-b5f097d6adaf" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="f89e8e37-234b-4274-8c2f-74e140deff65" LastKnownName="ICommand*" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="72a3f986-f1aa-4723-b448-116bc6907577" name="SetCommands" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -971,19 +964,6 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="305d4a82-8b69-45a8-9f2a-56da11d0e23d" name="Undo" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="973cee9a-6f11-41f2-99b2-90a655e736e7" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="aec7e93e-bf19-4074-9df7-c9ddd954cbb2" direction="Return" isUnique="false">
-                  <elementDefinition Id="567b9748-1a5b-4a55-81e0-617ed98d233e" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -1000,11 +980,6 @@
     <packageHasNamedElement>
       <referencedType Id="08b67366-93af-4b3b-aaeb-df20c5a60960" name="vector&lt;Slot*&gt;" isAbstract="false" isLeaf="false" cachedFullName="vector&lt;Slot*&gt;">
         <elementDefinition Id="3c094404-e15b-4a8d-8995-20da454ef1d4" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="948672b6-b9c3-4017-befb-d54f87a625e5" name="size_t" isAbstract="false" isLeaf="false" cachedFullName="size_t">
-        <elementDefinition Id="338b7b5c-db8a-4852-a778-bd4528e52752" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1053,26 +1028,12 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="19a246b7-7605-4b23-96f2-1c998110397a" name="TV" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="e803d430-6a8f-4443-be05-add687f67c68" />
-        <suppliersInternal>
-          <interfaceRealization Id="f687eb5a-0a1e-4726-8ac9-1ec16b0d4a47">
-            <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
-            <elementDefinition Id="92748a98-3b68-4d29-9048-b30a47bbe8fa" />
-          </interfaceRealization>
-        </suppliersInternal>
         <generalsInternal>
-          <generalization Id="4db3242f-c747-4a75-ae94-b52023126505" isSubstitutable="false">
-            <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
-            <elementDefinition Id="0b9a806e-ef4b-4c8b-84d3-1a3a3acc1f98" />
+          <generalization Id="3f22159c-7865-4af1-99ea-c1d3dd8ed37c" isSubstitutable="false">
+            <classMoniker Id="c5bfda6c-0a9b-46c4-abb7-b7cfb7f90f0f" LastKnownName="BaseDevice" />
+            <elementDefinition Id="bcfd645a-9ddf-42f6-ab7d-9a314e4b43a8" />
           </generalization>
         </generalsInternal>
-        <ownedAttributesInternal>
-          <property Id="63e19c4b-f5fb-4063-972b-8c3bc150e3bf" name="mState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="a912733d-3054-4b50-8c95-25fdc5e34a55" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="7950d418-7033-460f-ab37-ab3a926aa364" LastKnownName="OnOffState" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="33054f89-e541-40a2-a5b0-238114ebb825" name="Info" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="de446d2c-7062-4e5b-9af5-b077cd36a54a" />
@@ -1103,26 +1064,12 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="3aa1d2c1-8574-42ec-b2fe-85eae913c218" name="Heating" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="e356c0ea-0cc0-43ba-8854-6ddf9c9f7f96" />
-        <suppliersInternal>
-          <interfaceRealization Id="ed7192d6-7c0f-4a64-ace3-642737bb40d8">
-            <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
-            <elementDefinition Id="ce9a5c0a-0234-4b71-af59-27420ea65536" />
-          </interfaceRealization>
-        </suppliersInternal>
         <generalsInternal>
-          <generalization Id="ac65bbf3-fda6-4edc-8b86-c3fda6d8f225" isSubstitutable="false">
-            <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
-            <elementDefinition Id="5e360ec8-e465-4f95-a02e-0366c5b97ce8" />
+          <generalization Id="e32f8635-f285-4e85-ba53-f01aa3ba5632" isSubstitutable="false">
+            <classMoniker Id="c5bfda6c-0a9b-46c4-abb7-b7cfb7f90f0f" LastKnownName="BaseDevice" />
+            <elementDefinition Id="2a82c406-ab64-4e9c-91c2-1aa22a67b4c1" />
           </generalization>
         </generalsInternal>
-        <ownedAttributesInternal>
-          <property Id="6fe362a2-0aa5-4e3c-8854-64d3fbab5271" name="mState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="864d2dc0-031f-453a-8899-86ae71bff54c" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="aa12b453-e57e-48ad-8fc2-d8698c2f9716" LastKnownName="OnOffState" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="e3c30872-c5b4-4e92-8b93-b74e5205d8b4" name="Info" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="e7f9bbfb-e4fe-4083-873a-446f5f058ee7" />
@@ -1153,29 +1100,23 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="11b2b935-269e-4db8-94e9-7e77bee4bcf4" name="Stereo" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="bf11dec9-1fd2-40c1-8df3-55de43c0baed" />
-        <suppliersInternal>
-          <interfaceRealization Id="a0ecb33b-1b07-44f1-a9fb-f64548e73be2">
-            <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
-            <elementDefinition Id="e53f35c4-c8db-4e67-b75f-c9908b18b781" />
-          </interfaceRealization>
-        </suppliersInternal>
         <generalsInternal>
-          <generalization Id="e6663815-73ef-4a3a-b698-b5a1853461c3" isSubstitutable="false">
-            <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
-            <elementDefinition Id="4ea87e9e-0cb9-4026-8c28-96a164b828da" />
+          <generalization Id="a3a47a7e-3ede-4721-bdc3-580655983c2d" isSubstitutable="false">
+            <classMoniker Id="c5bfda6c-0a9b-46c4-abb7-b7cfb7f90f0f" LastKnownName="BaseDevice" />
+            <elementDefinition Id="e8227f91-d8f7-489e-a7a9-f8e0acc3c8db" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
-          <property Id="f9b9cad8-5a04-4368-b0e5-39fc68dd9008" name="mState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="117376cd-64a6-49c1-9e95-362dcc6d124a" />
-            <type_NamedElement>
-              <referencedTypeMoniker Id="8762614b-fdc2-406e-ac0d-97f562d347e0" LastKnownName="OnOffState" />
-            </type_NamedElement>
-          </property>
           <property Id="f6c01589-8157-4ce8-bff4-840b15a6248f" name="mDriveState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="614705ba-530d-4443-ad44-f75fd46820cc" />
             <type_NamedElement>
               <referencedTypeMoniker Id="e7b40bab-d84a-4d16-8b90-56ea1d4f8e32" LastKnownName="CDState" />
+            </type_NamedElement>
+          </property>
+          <property Id="6fbf251a-dda0-47aa-a562-09c3a9c9f61b" name="mLastDriveState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="0b885e90-d1aa-4948-a248-2a3484cea2b6" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="4bba0f9d-ba6c-42c6-84d9-eec0a0d9684e" LastKnownName="CDState" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -1198,32 +1139,144 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="3dbdd716-15b7-4e02-9cc6-e14fac634f09" name="OpenCD" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="169f0138-c750-46b5-9153-1f7267080957" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="da0cf5c3-4b43-4895-81a0-e6d73ae40b09" direction="Return" isUnique="false">
+                  <elementDefinition Id="99489f0a-30be-4b00-99e6-ca548aa2c006" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="13ab98d4-7420-4032-8a80-e687bdf5aa8e" name="CloseCD" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8dd8a3bd-61d9-46ed-a1fa-b7ed174bfbd4" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8da7f909-5c62-48ea-81dc-34645512d5f8" direction="Return" isUnique="false">
+                  <elementDefinition Id="adaa794f-14e3-4d73-9105-8bfabfd0febe" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="18a6ba1c-248a-48bb-bbd6-17c53c078da9" name="UndoCD" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="75da1c36-19f5-4313-81f6-c27e5c775cfd" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="113050d6-3037-49fe-af91-14159a2e801e" direction="Return" isUnique="false">
+                  <elementDefinition Id="ae858e5d-ae28-41a3-9720-e74af0100e78" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="aa12b453-e57e-48ad-8fc2-d8698c2f9716" name="OnOffState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::OnOffState">
-        <elementDefinition Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="7950d418-7033-460f-ab37-ab3a926aa364" name="OnOffState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::OnOffState">
-        <elementDefinition Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="8762614b-fdc2-406e-ac0d-97f562d347e0" name="OnOffState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::OnOffState">
-        <elementDefinition Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55" />
-      </referencedType>
-    </packageHasNamedElement>
     <packageHasNamedElement>
       <referencedType Id="e7b40bab-d84a-4d16-8b90-56ea1d4f8e32" name="CDState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::CDState">
         <elementDefinition Id="4b0c9c97-2dc5-4a95-bd1f-f08ca902101d" />
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="c5bfda6c-0a9b-46c4-abb7-b7cfb7f90f0f" name="BaseDevice" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="c5bfda6c-0a9b-46c4-abb7-b7cfb7f90f0f" name="BaseDevice" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="5d7deb8a-4abe-45b4-8554-9819326d97c0" />
+        <suppliersInternal>
+          <interfaceRealization Id="7bb195c5-7d1d-47b9-9d82-037221b6b676">
+            <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
+            <elementDefinition Id="9a531e5d-90e6-449b-81d4-eda2e7fb72a5" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="b6999a8b-a116-4c3e-bde3-aeaaad39e429" isSubstitutable="false">
+            <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
+            <elementDefinition Id="ec43a60b-fccd-4fb2-a408-4666139a7ada" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="f9036d9d-7607-45b8-b3fb-14dee4f86798" name="mState" visibility="Protected" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="93679e98-7283-4a3a-9a1a-7d25a67fbbc1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="048b45ca-b6f2-4f8a-ab2d-b22377aefc38" LastKnownName="OnOffState" />
+            </type_NamedElement>
+          </property>
+          <property Id="ffd16251-6730-44ba-8b1f-aedea8c2385e" name="mLastState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a56d8192-1eec-44ff-9dac-2db0fed19e0b" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="3bddf720-7697-44f5-85c8-836eddaae82c" LastKnownName="OnOffState" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="2275a553-af1b-4ed6-8d39-6fa367f56eac" name="Info" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cbd18e82-a17b-4d25-b993-0bf77b75e56d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d2899555-463a-4710-b4fc-451b6be0231c" name="ostream&amp;" direction="In" isUnique="false">
+                  <elementDefinition Id="81a66007-d77f-4c1d-88bf-05b415456016" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="127d08b3-b8d5-44c1-bcc2-ca5deeb5f6d2" direction="Return" isUnique="false">
+                  <elementDefinition Id="cbb26d82-1360-4cf5-80b2-661e3fa37e97" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="45b92268-842e-48e0-9e2b-7affc1802e3d" name="TurnOn" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="efddf25b-db8c-40e4-a0a1-fbabb8dfcee3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="4cd8beb7-3ace-480f-a3fb-d07c3b785d78" direction="Return" isUnique="false">
+                  <elementDefinition Id="55626b9c-6a61-43a4-b444-455ddd804b16" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="e3853ee2-39b0-4f6c-9879-f2618cba96d3" name="TurnOff" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="107e0088-66e6-40a7-948f-8df0c87d8f00" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="aacc08d5-b6cf-4f0e-b577-1fc905f6070b" direction="Return" isUnique="false">
+                  <elementDefinition Id="a96d5afe-4665-488c-a1cc-4769c0c167db" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="9163af25-e6d4-4d66-ba30-5984599b8b03" name="UndoAction" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2c141304-bc58-4b62-a087-198709982533" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="403d93b4-0b44-40ba-9292-c1a217b5c2fe" direction="Return" isUnique="false">
+                  <elementDefinition Id="5ccf9ad4-fd52-4f1e-b460-07bb57fd4e56" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="3f0ec311-f43a-4d85-8213-05ad0993e2b7" name="BaseDevice" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cdc813ac-5a61-40be-a8ba-8f5a5a384e96" />
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
@@ -1247,22 +1300,17 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="79feeedd-e364-43cf-8465-dde97d92222b" name="OnOffState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::OnOffState">
+      <referencedType Id="3bddf720-7697-44f5-85c8-836eddaae82c" name="OnOffState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::OnOffState">
         <elementDefinition Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="039e4989-0e37-4ba8-af20-ca063f78baea" name="OnOffState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::OnOffState">
+      <referencedType Id="048b45ca-b6f2-4f8a-ab2d-b22377aefc38" name="OnOffState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::OnOffState">
         <elementDefinition Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55" />
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="0929aa04-4c5e-44ba-a80f-f6112d06e885" name="CDState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::CDState">
-        <elementDefinition Id="4b0c9c97-2dc5-4a95-bd1f-f08ca902101d" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="c24dc580-2651-4ece-afdd-1f9a3747f2c8" name="CDState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::CDState">
+      <referencedType Id="4bba0f9d-ba6c-42c6-84d9-eec0a0d9684e" name="CDState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::CDState">
         <elementDefinition Id="4b0c9c97-2dc5-4a95-bd1f-f08ca902101d" />
       </referencedType>
     </packageHasNamedElement>

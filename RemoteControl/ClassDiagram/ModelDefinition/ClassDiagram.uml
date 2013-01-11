@@ -9,8 +9,31 @@
       <body>stereanlage bei open und close auch nur device?</body>
     </comment>
     <comment
-      Id="b2e0acf2-4e8d-4538-ad95-72ae643b6232">
-      <body>richtig verbinden fehlt noch</body>
+      Id="9a4b80ae-6b94-4477-8311-8ee014905736">
+      <body>bei SetCommands überprüfen ob commands zulässig</body>
+    </comment>
+    <comment
+      Id="fdcba7a1-7f98-476a-887b-021fb181cffd">
+      <body>mLastCommand von Slot nach RemoteControl verschoben,
+mLastPressedButton gelöscht
+weil: im Command ist device gespeichert</body>
+    </comment>
+    <comment
+      Id="b4e4d237-00c9-4fc3-824c-1dd15b125e91">
+      <body>bei On/OffButtonPressed
+wir das jeweilige command vom slot im LastCommand gespeichert</body>
+    </comment>
+    <comment
+      Id="e21c87a8-52b9-42d4-a9f2-ffe5e08c1fda">
+      <body>mLastState von Commands nach Device verschoben</body>
+    </comment>
+    <comment
+      Id="8d3bf061-0440-4f85-b2ac-55c3ad70d36c">
+      <body>wenn UndoButtonPressed dann mLastCommand auf 0 setzen weil nur einmal UndoButtonPressed sein darf</body>
+    </comment>
+    <comment
+      Id="5563f6ff-9078-450c-ac01-4c68f52246fa">
+      <body>Im Konstruktor werden States auf Off gesetzt</body>
     </comment>
   </ownedCommentsInternal>
   <profileInstances>
@@ -40,7 +63,7 @@
       <class
         Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
         name="Object"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <ownedOperationsInternal>
@@ -452,25 +475,6 @@
         </targetEnds>
         <ownedAttributesInternal>
           <property
-            Id="0245dcb6-798c-4a83-a5f6-c32062a06709"
-            name="mLastPressedButton"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="338b7b5c-db8a-4852-a778-bd4528e52752"
-                LastKnownName="size_t"
-                LastKnownLocation="ClassDiagram.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="e31b76ce-0885-45c2-bbd4-35adc6312579"
             name="mSlots"
             visibility="Private"
@@ -486,6 +490,25 @@
               <undefinedTypeMoniker
                 Id="3c094404-e15b-4a8d-8995-20da454ef1d4"
                 LastKnownName="vector&lt;Slot*&gt;"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="8bb1c91c-2342-49bc-adbc-609104734108"
+            name="mLastCommand"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="0441648a-3978-448b-8ec1-3b8f14c3feca"
+                LastKnownName="ICommand*"
                 LastKnownLocation="ClassDiagram.uml" />
             </type_NamedElement>
           </property>
@@ -739,7 +762,7 @@
       <class
         Id="97d6ea3f-105f-4985-8aff-3dbd5ee801cf"
         name="NoCommand"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -817,7 +840,7 @@
       <class
         Id="208f3600-1fd9-49c4-ae34-ec3e188743fc"
         name="OnCommand"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -898,25 +921,6 @@
                 LastKnownLocation="ClassDiagram.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="b361da5f-8c10-4558-b8b7-2d4abf4dd321"
-            name="mLastState"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55"
-                LastKnownName="OnOffState"
-                LastKnownLocation="ClassDiagram.uml" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -974,7 +978,7 @@
       <class
         Id="f97d6a89-f9d2-41a9-acc2-ea8dba567ec1"
         name="OffCommand"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1055,25 +1059,6 @@
                 LastKnownLocation="ClassDiagram.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="5653c758-f496-4340-8ff3-603dbb8fe194"
-            name="mLastState"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55"
-                LastKnownName="OnOffState"
-                LastKnownLocation="ClassDiagram.uml" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -1139,7 +1124,7 @@
       <class
         Id="cda52c15-dfc3-4248-b34b-8b37a45ad53f"
         name="OpenCommand"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1220,25 +1205,6 @@
                 LastKnownLocation="ClassDiagram.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="bb837092-05ac-46cb-b126-346e1b11c9da"
-            name="mLastDriveState"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="4b0c9c97-2dc5-4a95-bd1f-f08ca902101d"
-                LastKnownName="CDState"
-                LastKnownLocation="ClassDiagram.uml" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -1296,7 +1262,7 @@
       <class
         Id="4f35dfa8-2e76-42e7-88e4-2e8f73469a02"
         name="CloseCommand"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1377,25 +1343,6 @@
                 LastKnownLocation="ClassDiagram.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="5c23321c-a353-412d-9774-532d210a176e"
-            name="mLastDriveState"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="4b0c9c97-2dc5-4a95-bd1f-f08ca902101d"
-                LastKnownName="CDState"
-                LastKnownLocation="ClassDiagram.uml" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -1453,7 +1400,7 @@
       <class
         Id="2cb3a83e-0374-4bd1-a3b6-9c59baa9d4f9"
         name="MacroCommand"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1780,25 +1727,6 @@
                 LastKnownLocation="ClassDiagram.uml" />
             </type_NamedElement>
           </property>
-          <property
-            Id="592f02cf-5137-4dd4-bf79-b5f097d6adaf"
-            name="mLastCommand"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="0441648a-3978-448b-8ec1-3b8f14c3feca"
-                LastKnownName="ICommand*"
-                LastKnownLocation="ClassDiagram.uml" />
-            </type_NamedElement>
-          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -1883,30 +1811,6 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="75f50a94-9bb8-47a7-ae8b-a98106270510"
-                  direction="Return"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
-                      LastKnownName="void"
-                      LastKnownLocation="ClassDiagram.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="973cee9a-6f11-41f2-99b2-90a655e736e7"
-            name="Undo"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="567b9748-1a5b-4a55-81e0-617ed98d233e"
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
@@ -2018,46 +1922,16 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="92748a98-3b68-4d29-9048-b30a47bbe8fa">
-            <interfaceMoniker
-              Id="02f2e94c-ff32-4690-b9ad-ed87c16e6988"
-              LastKnownName="IDevice"
-              LastKnownLocation="ClassDiagram.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="0b9a806e-ef4b-4c8b-84d3-1a3a3acc1f98"
+            Id="bcfd645a-9ddf-42f6-ab7d-9a314e4b43a8"
             isSubstitutable="false">
             <classMoniker
-              Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
-              LastKnownName="Object"
+              Id="5d7deb8a-4abe-45b4-8554-9819326d97c0"
+              LastKnownName="BaseDevice"
               LastKnownLocation="ClassDiagram.uml" />
           </generalization>
         </generalsInternal>
-        <ownedAttributesInternal>
-          <property
-            Id="a912733d-3054-4b50-8c95-25fdc5e34a55"
-            name="mState"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55"
-                LastKnownName="OnOffState"
-                LastKnownLocation="ClassDiagram.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="de446d2c-7062-4e5b-9af5-b077cd36a54a"
@@ -2100,46 +1974,16 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="ce9a5c0a-0234-4b71-af59-27420ea65536">
-            <interfaceMoniker
-              Id="02f2e94c-ff32-4690-b9ad-ed87c16e6988"
-              LastKnownName="IDevice"
-              LastKnownLocation="ClassDiagram.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="5e360ec8-e465-4f95-a02e-0366c5b97ce8"
+            Id="2a82c406-ab64-4e9c-91c2-1aa22a67b4c1"
             isSubstitutable="false">
             <classMoniker
-              Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
-              LastKnownName="Object"
+              Id="5d7deb8a-4abe-45b4-8554-9819326d97c0"
+              LastKnownName="BaseDevice"
               LastKnownLocation="ClassDiagram.uml" />
           </generalization>
         </generalsInternal>
-        <ownedAttributesInternal>
-          <property
-            Id="864d2dc0-031f-453a-8899-86ae71bff54c"
-            name="mState"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <enumerationMoniker
-                Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55"
-                LastKnownName="OnOffState"
-                LastKnownLocation="ClassDiagram.uml" />
-            </type_NamedElement>
-          </property>
-        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="e7f9bbfb-e4fe-4083-873a-446f5f058ee7"
@@ -2182,29 +2026,20 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <interfaceRealization
-            Id="e53f35c4-c8db-4e67-b75f-c9908b18b781">
-            <interfaceMoniker
-              Id="02f2e94c-ff32-4690-b9ad-ed87c16e6988"
-              LastKnownName="IDevice"
-              LastKnownLocation="ClassDiagram.uml" />
-          </interfaceRealization>
-        </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="4ea87e9e-0cb9-4026-8c28-96a164b828da"
+            Id="e8227f91-d8f7-489e-a7a9-f8e0acc3c8db"
             isSubstitutable="false">
             <classMoniker
-              Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
-              LastKnownName="Object"
+              Id="5d7deb8a-4abe-45b4-8554-9819326d97c0"
+              LastKnownName="BaseDevice"
               LastKnownLocation="ClassDiagram.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
           <property
-            Id="117376cd-64a6-49c1-9e95-362dcc6d124a"
-            name="mState"
+            Id="614705ba-530d-4443-ad44-f75fd46820cc"
+            name="mDriveState"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2216,14 +2051,14 @@
             isComposite="false">
             <type_NamedElement>
               <enumerationMoniker
-                Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55"
-                LastKnownName="OnOffState"
+                Id="4b0c9c97-2dc5-4a95-bd1f-f08ca902101d"
+                LastKnownName="CDState"
                 LastKnownLocation="ClassDiagram.uml" />
             </type_NamedElement>
           </property>
           <property
-            Id="614705ba-530d-4443-ad44-f75fd46820cc"
-            name="mDriveState"
+            Id="0b885e90-d1aa-4948-a248-2a3484cea2b6"
+            name="mLastDriveState"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2273,6 +2108,78 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="169f0138-c750-46b5-9153-1f7267080957"
+            name="OpenCD"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="99489f0a-30be-4b00-99e6-ca548aa2c006"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
+                      LastKnownName="void"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8dd8a3bd-61d9-46ed-a1fa-b7ed174bfbd4"
+            name="CloseCD"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="adaa794f-14e3-4d73-9105-8bfabfd0febe"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
+                      LastKnownName="void"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="75da1c36-19f5-4313-81f6-c27e5c775cfd"
+            name="UndoCD"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ae858e5d-ae28-41a3-9720-e74af0100e78"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
+                      LastKnownName="void"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2285,9 +2192,182 @@
       <class
         Id="5d7deb8a-4abe-45b4-8554-9819326d97c0"
         name="BaseDevice"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="9a531e5d-90e6-449b-81d4-eda2e7fb72a5">
+            <interfaceMoniker
+              Id="02f2e94c-ff32-4690-b9ad-ed87c16e6988"
+              LastKnownName="IDevice"
+              LastKnownLocation="ClassDiagram.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="ec43a60b-fccd-4fb2-a408-4666139a7ada"
+            isSubstitutable="false">
+            <classMoniker
+              Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
+              LastKnownName="Object"
+              LastKnownLocation="ClassDiagram.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="93679e98-7283-4a3a-9a1a-7d25a67fbbc1"
+            name="mState"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55"
+                LastKnownName="OnOffState"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a56d8192-1eec-44ff-9dac-2db0fed19e0b"
+            name="mLastState"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55"
+                LastKnownName="OnOffState"
+                LastKnownLocation="ClassDiagram.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="cbd18e82-a17b-4d25-b993-0bf77b75e56d"
+            name="Info"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="81a66007-d77f-4c1d-88bf-05b415456016"
+                  name="ostream&amp;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cbb26d82-1360-4cf5-80b2-661e3fa37e97"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
+                      LastKnownName="void"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="efddf25b-db8c-40e4-a0a1-fbabb8dfcee3"
+            name="TurnOn"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="55626b9c-6a61-43a4-b444-455ddd804b16"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
+                      LastKnownName="void"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="107e0088-66e6-40a7-948f-8df0c87d8f00"
+            name="TurnOff"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a96d5afe-4665-488c-a1cc-4769c0c167db"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
+                      LastKnownName="void"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2c141304-bc58-4b62-a087-198709982533"
+            name="UndoAction"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5ccf9ad4-fd52-4f1e-b460-07bb57fd4e56"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
+                      LastKnownName="void"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="cdc813ac-5a61-40be-a8ba-8f5a5a384e96"
+            name="BaseDevice"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <undefinedType
