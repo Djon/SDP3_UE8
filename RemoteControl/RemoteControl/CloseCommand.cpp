@@ -1,14 +1,37 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : Object.cpp
+// Workfile : CloseCommand.cpp
 // Author : Reinhard Penn, Bernhard Selymes
 // Date : 11.01.2012
-// Description : Baseclass with protected constructor
+// Description : Implementation of class CloseCommand
 ///////////////////////////////////////////////////////////////////////////
 
-#include "Object.h"
+#include <iostream>
+#include <string>
+#include "CloseCommand.h"
 
-Object::Object() 
-{}
+CloseCommand::CloseCommand(Stereo* stereo)
+{
+	try
+	{
+		if(stereo == 0)
+		{
+			std::string error = "no valid pointer";
+			throw (error); 
+		}
+		mStereo = stereo;
+	}
+	catch (std::string const& error)
+	{
+		std::cout << "Error in CloseCommand::CloseCommand: " << error << std::endl;
+	}
+}
+	
+void CloseCommand::Execute()
+{
+	mStereo->CloseCD();
+}
 
-Object::~Object() 
-{}
+void CloseCommand::Undo()
+{
+	mStereo->UndoCD();
+}

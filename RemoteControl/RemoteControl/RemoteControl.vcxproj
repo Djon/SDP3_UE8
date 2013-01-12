@@ -99,6 +99,7 @@
     <ClCompile Include="CloseCommand.cpp" />
     <ClCompile Include="Heating.cpp" />
     <ClCompile Include="MacroCommand.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="NoCommand.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OffCommand.cpp" />

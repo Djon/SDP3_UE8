@@ -17,7 +17,7 @@ class BaseDevice :
 	public IDevice
 {
 public:
-	BaseDevice() : mState(eOff), mLastState(eOff);
+	BaseDevice() : mState(eOff), mLastState(eOff) {}
 	void Info(std::ostream& stream) = 0;
 	void TurnOff();
 	void TurnOn();

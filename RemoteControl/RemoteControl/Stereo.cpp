@@ -20,11 +20,25 @@ void Stereo::Info(std::ostream& stream)
 		}
 		if(mState == eOn)
 		{
-			stream << "Stereo is On" << std::endl;
+			if(mDriveState == eOpened)
+			{
+				stream << "Stereo is On" << "  " << "CD is opened" <<  std::endl;
+			}
+			else
+			{
+				stream << "Stereo is On" << "  " << "CD is closed" <<  std::endl;
+			}
 		}
 		else 
 		{
-			stream << "Stereo is Off" << std::endl;
+			if(mDriveState == eOpened)
+			{
+				stream << "Stereo is Off" << " " << "CD is opened" <<  std::endl;
+			}
+			else
+			{
+				stream << "Stereo is Off" << " " << "CD is closed" <<  std::endl;
+			}
 		}
 	}
 	catch (std::string const& error)

@@ -32,6 +32,10 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <elementDefinition Id="5563f6ff-9078-450c-ac01-4c68f52246fa" />
       <body>Im Konstruktor werden States auf Off gesetzt</body>
     </comment>
+    <comment Id="6376fb3f-0ad6-48af-98d4-caa946a5b412">
+      <elementDefinition Id="5f949688-2450-4aa1-a8c3-858e62f5b99c" />
+      <body>keine überprüfung ob gleicher command mit gleichem device schon drinnen</body>
+    </comment>
   </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
@@ -385,7 +389,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="0a0bf67f-935b-416a-a6eb-fcd851fed2d5" name="NoCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
+      <class Id="0a0bf67f-935b-416a-a6eb-fcd851fed2d5" name="NoCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="97d6ea3f-105f-4985-8aff-3dbd5ee801cf" />
         <suppliersInternal>
           <interfaceRealization Id="4a0fc533-1352-49f8-a73d-5b906329515f">
@@ -400,7 +404,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
           </generalization>
         </generalsInternal>
         <ownedOperationsInternal>
-          <operation Id="e21c5446-efa4-4d62-9a66-9208f9c675f1" name="Execute" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="e21c5446-efa4-4d62-9a66-9208f9c675f1" name="Execute" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="cee062f6-cdbe-4a3f-8cb0-390677857776" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -413,7 +417,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="4b35f4ab-3eca-4f8e-b3cb-31f61c66e0a8" name="Undo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="4b35f4ab-3eca-4f8e-b3cb-31f61c66e0a8" name="Undo" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="24be228b-d212-4873-8109-2f0917c0f2fa" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -435,7 +439,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="cc7b7822-0629-49c1-8b7d-a5e29bcefa3a" name="OnCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
+      <class Id="cc7b7822-0629-49c1-8b7d-a5e29bcefa3a" name="OnCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="208f3600-1fd9-49c4-ae34-ec3e188743fc" />
         <suppliersInternal>
           <interfaceRealization Id="3270cbbe-aa43-47c2-9023-3f2c1b987864">
@@ -476,7 +480,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
           </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
-          <operation Id="fcd8fb3b-86ad-4c59-830b-30bd47813241" name="Execute" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="fcd8fb3b-86ad-4c59-830b-30bd47813241" name="Execute" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="120cb1a5-9401-4794-ac53-fd0a21b65d79" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -489,7 +493,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="db104bc0-9509-4a3b-babb-af1a87d3ee9b" name="Undo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="db104bc0-9509-4a3b-babb-af1a87d3ee9b" name="Undo" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="5739341e-c263-436a-9918-43c1538a9ed0" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -498,6 +502,16 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                   <type_NamedElement>
                     <referencedTypeMoniker Id="e4d6f96f-6bed-4032-af5d-01e06836387d" LastKnownName="void" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a0986c1a-1036-424b-b2d3-d53de805e6b4" name="OnCommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cde2637e-2cc2-4d57-b0f1-37b58b5e04af" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3cfe80e3-8607-4464-881e-8e7cf50ceb7d" name="BaseDevice*" direction="In" isUnique="false">
+                  <elementDefinition Id="5f370fd8-99eb-4140-93e0-0c02b7f79f38" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -511,7 +525,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="5e6be40c-033f-4420-9dda-0a76a995ec6c" name="OffCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
+      <class Id="5e6be40c-033f-4420-9dda-0a76a995ec6c" name="OffCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="f97d6a89-f9d2-41a9-acc2-ea8dba567ec1" />
         <suppliersInternal>
           <interfaceRealization Id="2ea35024-4cb7-46ab-9339-904b228f933b">
@@ -552,7 +566,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
           </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
-          <operation Id="d122363e-9c23-4ed1-893d-d2bb1a31cfc6" name="Execute" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="d122363e-9c23-4ed1-893d-d2bb1a31cfc6" name="Execute" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="6fb8578c-e31b-405c-b1ad-f1574ccef847" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -565,7 +579,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="ae8459e0-f09d-43fa-87c7-1e1ed1fa2cf6" name="Undo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="ae8459e0-f09d-43fa-87c7-1e1ed1fa2cf6" name="Undo" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="360b42f7-ccd6-4324-bb49-fa933fbeb742" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -574,6 +588,16 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                   <type_NamedElement>
                     <referencedTypeMoniker Id="aba1956e-39da-4d20-aadf-7230b4968b77" LastKnownName="void" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="93cad582-8fc9-4720-a336-dd09de778c54" name="OffCommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0e2e8370-9a39-4bce-af72-0e053e1711c8" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="52433860-d01c-491c-8d1e-b17613e843de" name="BaseDevice*" direction="In" isUnique="false">
+                  <elementDefinition Id="8a482322-f94d-4eb8-8f36-afcfe7b0fef1" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -587,7 +611,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="bc935afd-68d3-4833-ba59-bfc4886775e6" name="OpenCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
+      <class Id="bc935afd-68d3-4833-ba59-bfc4886775e6" name="OpenCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="cda52c15-dfc3-4248-b34b-8b37a45ad53f" />
         <suppliersInternal>
           <interfaceRealization Id="eb09d66e-bf17-4b85-8d95-7e7412edf33e">
@@ -628,7 +652,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
           </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
-          <operation Id="480893f7-434b-4ccd-9c84-1f6041b06dc8" name="Execute" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="480893f7-434b-4ccd-9c84-1f6041b06dc8" name="Execute" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="a692b6d4-a7da-4027-84da-692a21331d35" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -641,7 +665,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="af498a43-c6ab-409a-8d2f-5f4511a17dca" name="Undo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="af498a43-c6ab-409a-8d2f-5f4511a17dca" name="Undo" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="8a1a66af-6447-4127-ada4-5000d57284d8" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -650,6 +674,16 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                   <type_NamedElement>
                     <referencedTypeMoniker Id="3c5069da-8031-41d4-bdbf-3a684c18cad5" LastKnownName="void" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="5c14116e-1c3e-4ba6-9a39-510ecd805de4" name="OpenCommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="82234b7a-aa42-4055-ad9c-ba44157c7074" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="c13143f3-144f-410a-ada4-c60ae55e61d4" name="Stereo*" direction="In" isUnique="false">
+                  <elementDefinition Id="5407b31a-5f6d-45c1-bf9d-d9dea0a5c3b2" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -663,7 +697,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="d323b3e7-58c7-4dc5-a964-dfeaa549bac1" name="CloseCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
+      <class Id="d323b3e7-58c7-4dc5-a964-dfeaa549bac1" name="CloseCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="4f35dfa8-2e76-42e7-88e4-2e8f73469a02" />
         <suppliersInternal>
           <interfaceRealization Id="4345f0fa-5a0c-4e72-a632-72af5820df13">
@@ -704,7 +738,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
           </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
-          <operation Id="3c625369-3671-45b6-b272-fcd30b066db1" name="Execute" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="3c625369-3671-45b6-b272-fcd30b066db1" name="Execute" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="fbcf3754-f170-425d-b894-7908c03c7d4b" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -717,7 +751,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="3d5b21ce-b9a1-4a8f-8189-d75967e7ecf4" name="Undo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="3d5b21ce-b9a1-4a8f-8189-d75967e7ecf4" name="Undo" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="0a503392-6ff1-4da1-8329-a72260bcd44d" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -726,6 +760,16 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                   <type_NamedElement>
                     <referencedTypeMoniker Id="6d1d27c3-40e7-44a0-852e-caa25e46a820" LastKnownName="void" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a1d0902c-4241-47ab-932c-3ec5d8b57b0c" name="CloseCommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="08f95352-8be0-4afd-ac03-23ba272ca923" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="48621e74-97c3-4e05-944f-76611862de1e" name="Stereo*" direction="In" isUnique="false">
+                  <elementDefinition Id="8ab4305b-eb5b-48c1-8b1f-97d1a8d75b29" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -739,7 +783,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="82cc8502-2a10-44b7-acc2-c258194daf31" name="MacroCommand" isAbstract="true" isLeaf="false" isActiveClass="false">
+      <class Id="82cc8502-2a10-44b7-acc2-c258194daf31" name="MacroCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="2cb3a83e-0374-4bd1-a3b6-9c59baa9d4f9" />
         <suppliersInternal>
           <interfaceRealization Id="5490bb8c-3f05-4b29-b8f3-f054aced303c">
@@ -785,12 +829,12 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
           <property Id="76d46c8b-3513-4622-a988-f1bc5e02991c" name="mCommands" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="6e105a5a-53d2-41c6-aedb-36174fbe3fba" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="db52112a-f627-4f4f-9924-3544540da953" LastKnownName="list&lt;Command*&gt;" />
+              <referencedTypeMoniker Id="d719b6fb-899e-4899-b11e-560b100fadcf" LastKnownName="list&lt;ICommand*&gt;" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
-          <operation Id="a1c5dceb-b655-47cf-9113-dcfb34ccc01d" name="Execute" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="a1c5dceb-b655-47cf-9113-dcfb34ccc01d" name="Execute" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="4376c018-6cc5-48db-80c9-45e277d16e35" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -803,7 +847,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="2e1214d1-0741-4d42-a6d6-70df06c4dc12" name="Undo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="2e1214d1-0741-4d42-a6d6-70df06c4dc12" name="Undo" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="ce1750e1-6361-4b8e-ad07-a09229b2a6b0" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -855,11 +899,6 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="db52112a-f627-4f4f-9924-3544540da953" name="list&lt;Command*&gt;" isAbstract="false" isLeaf="false" cachedFullName="list&lt;Command*&gt;">
-        <elementDefinition Id="59f9af47-5e5d-416a-864a-3c8b1001a2b0" />
-      </referencedType>
-    </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
       <class Id="3fa606e5-ea7c-405f-8a9d-e2567238ec61" name="Slot" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="14b5c0ae-f0ea-49e9-b1d9-ddd702d01a96" />
@@ -1312,6 +1351,11 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
     <packageHasNamedElement>
       <referencedType Id="4bba0f9d-ba6c-42c6-84d9-eec0a0d9684e" name="CDState" isAbstract="false" isLeaf="false" cachedFullName="ClassDiagram::CDState">
         <elementDefinition Id="4b0c9c97-2dc5-4a95-bd1f-f08ca902101d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d719b6fb-899e-4899-b11e-560b100fadcf" name="list&lt;ICommand*&gt;" isAbstract="false" isLeaf="false" cachedFullName="list&lt;ICommand*&gt;">
+        <elementDefinition Id="d6bb54f8-459e-4880-b5a0-fd4f217d0c85" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

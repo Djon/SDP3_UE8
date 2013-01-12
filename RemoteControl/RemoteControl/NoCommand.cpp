@@ -1,14 +1,19 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : Object.cpp
+// Workfile : NoCommand.cpp
 // Author : Reinhard Penn, Bernhard Selymes
 // Date : 11.01.2012
-// Description : Baseclass with protected constructor
+// Description : Implementation of class NoCommand
 ///////////////////////////////////////////////////////////////////////////
 
-#include "Object.h"
+#include <iostream>
+#include "NoCommand.h"
 
-Object::Object() 
-{}
+void NoCommand::Execute()
+{
+	std::cout << "Can not execute: No Command" << std::endl;
+}
 
-Object::~Object() 
-{}
+void NoCommand::Undo()
+{
+	std::cout << "Can not undo: No Command" << std::endl;
+}

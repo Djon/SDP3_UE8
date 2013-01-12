@@ -1,21 +1,28 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : Object.h
+// Workfile : OffCommand.h
 // Author : Reinhard Penn, Bernhard Selymes
 // Date : 11.01.2012
-// Description : Header of Object.cpp
+// Description : Header of OffCommand.cpp
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef OFFCOMMAND_H
+#define OFFCOMMAND_H
 
-class Object
+#include "Object.h"
+#include "ICommand.h"
+#include "BaseDevice.h"
+
+class OffCommand :
+	public Object,
+	public ICommand
 {
 public:
-	//virtual Destructor for baseclass
-	virtual ~Object();
-protected:
-	//Default CTor for baseclass
-	Object();
+	OffCommand(BaseDevice* device);
+	void Execute();
+	void Undo();
+
+private:
+	BaseDevice* mDevice;
 };
 
 #endif

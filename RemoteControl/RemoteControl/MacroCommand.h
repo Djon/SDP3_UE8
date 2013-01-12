@@ -1,21 +1,30 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : Object.h
+// Workfile : MacroCommand.h
 // Author : Reinhard Penn, Bernhard Selymes
 // Date : 11.01.2012
-// Description : Header of Object.cpp
+// Description : Header of MacroCommand.cpp
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef MACROCOMMAND_H
+#define MACROCOMMAND_H
 
-class Object
+#include <list>
+#include "Object.h"
+#include "ICommand.h"
+
+typedef std::list<ICommand*> TCommands;
+
+class MacroCommand :
+	public Object,
+	public ICommand
 {
 public:
-	//virtual Destructor for baseclass
-	virtual ~Object();
-protected:
-	//Default CTor for baseclass
-	Object();
+	void Execute();
+	void Undo();
+	void Add(ICommand* command);
+	void Remove(ICommand* command);
+private:
+	TCommands mCommands;
 };
 
 #endif

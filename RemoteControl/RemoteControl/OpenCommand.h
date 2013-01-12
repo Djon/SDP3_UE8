@@ -1,21 +1,28 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : Object.h
+// Workfile : OpenCommand.h
 // Author : Reinhard Penn, Bernhard Selymes
 // Date : 11.01.2012
-// Description : Header of Object.cpp
+// Description : Header of OpenCommand.cpp
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef OPENCOMMAND_H
+#define OPENCOMMAND_H
 
-class Object
+#include "Object.h"
+#include "ICommand.h"
+#include "Stereo.h"
+
+class OpenCommand :
+	public Object,
+	public ICommand
 {
 public:
-	//virtual Destructor for baseclass
-	virtual ~Object();
-protected:
-	//Default CTor for baseclass
-	Object();
+	OpenCommand(Stereo* stereo);
+	void Execute();
+	void Undo();
+
+private:
+	Stereo* mStereo;
 };
 
 #endif

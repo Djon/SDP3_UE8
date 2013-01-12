@@ -35,6 +35,10 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       Id="5563f6ff-9078-450c-ac01-4c68f52246fa">
       <body>Im Konstruktor werden States auf Off gesetzt</body>
     </comment>
+    <comment
+      Id="5f949688-2450-4aa1-a8c3-858e62f5b99c">
+      <body>keine überprüfung ob gleicher command mit gleichem device schon drinnen</body>
+    </comment>
   </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
@@ -762,7 +766,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class
         Id="97d6ea3f-105f-4985-8aff-3dbd5ee801cf"
         name="NoCommand"
-        isAbstract="true"
+        isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -790,7 +794,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Execute"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -814,7 +818,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Undo"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -840,7 +844,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class
         Id="208f3600-1fd9-49c4-ae34-ec3e188743fc"
         name="OnCommand"
-        isAbstract="true"
+        isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -928,7 +932,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Execute"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -952,7 +956,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Undo"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -971,6 +975,24 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="cde2637e-2cc2-4d57-b0f1-37b58b5e04af"
+            name="OnCommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5f370fd8-99eb-4140-93e0-0c02b7f79f38"
+                  name="BaseDevice*"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -978,7 +1000,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class
         Id="f97d6a89-f9d2-41a9-acc2-ea8dba567ec1"
         name="OffCommand"
-        isAbstract="true"
+        isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1066,7 +1088,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Execute"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -1090,7 +1112,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Undo"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -1109,6 +1131,24 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="0e2e8370-9a39-4bce-af72-0e053e1711c8"
+            name="OffCommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8a482322-f94d-4eb8-8f36-afcfe7b0fef1"
+                  name="BaseDevice*"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1124,7 +1164,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class
         Id="cda52c15-dfc3-4248-b34b-8b37a45ad53f"
         name="OpenCommand"
-        isAbstract="true"
+        isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1212,7 +1252,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Execute"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -1236,7 +1276,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Undo"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -1255,6 +1295,24 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="82234b7a-aa42-4055-ad9c-ba44157c7074"
+            name="OpenCommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5407b31a-5f6d-45c1-bf9d-d9dea0a5c3b2"
+                  name="Stereo*"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1262,7 +1320,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class
         Id="4f35dfa8-2e76-42e7-88e4-2e8f73469a02"
         name="CloseCommand"
-        isAbstract="true"
+        isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1350,7 +1408,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Execute"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -1374,7 +1432,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Undo"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -1393,6 +1451,24 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="08f95352-8be0-4afd-ac03-23ba272ca923"
+            name="CloseCommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8ab4305b-eb5b-48c1-8b1f-97d1a8d75b29"
+                  name="Stereo*"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1400,7 +1476,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class
         Id="2cb3a83e-0374-4bd1-a3b6-9c59baa9d4f9"
         name="MacroCommand"
-        isAbstract="true"
+        isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1489,8 +1565,8 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             isComposite="false">
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="59f9af47-5e5d-416a-864a-3c8b1001a2b0"
-                LastKnownName="list&lt;Command*&gt;"
+                Id="d6bb54f8-459e-4880-b5a0-fd4f217d0c85"
+                LastKnownName="list&lt;ICommand*&gt;"
                 LastKnownLocation="ClassDiagram.uml" />
             </type_NamedElement>
           </property>
@@ -1501,7 +1577,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Execute"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -1525,7 +1601,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             name="Undo"
             isLeaf="false"
             isStatic="false"
-            isAbstract="true"
+            isAbstract="false"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
@@ -2378,6 +2454,11 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <undefinedType
         Id="3f481ba2-3b22-47df-beea-1a5e8434f234"
         name="Stereo*" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d6bb54f8-459e-4880-b5a0-fd4f217d0c85"
+        name="list&lt;ICommand*&gt;" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

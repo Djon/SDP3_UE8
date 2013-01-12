@@ -5,10 +5,10 @@
 // Description : Baseclass with protected constructor
 ///////////////////////////////////////////////////////////////////////////
 
-#include "Object.h"
-
-Object::Object() 
-{}
-
-Object::~Object() 
-{}
+//#include "Object.h"
+//
+//Object::Object() 
+//{}
+//
+//Object::~Object() 
+//{}

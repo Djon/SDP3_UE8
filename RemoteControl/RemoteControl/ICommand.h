@@ -1,21 +1,19 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : Object.h
+// Workfile : ICommand.h
 // Author : Reinhard Penn, Bernhard Selymes
 // Date : 11.01.2012
-// Description : Header of Object.cpp
+// Description : Interface for Commands
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef COMMAND_H
+#define COMMAND_H
 
-class Object
+class ICommand
 {
 public:
-	//virtual Destructor for baseclass
-	virtual ~Object();
-protected:
-	//Default CTor for baseclass
-	Object();
+	virtual ~ICommand(){};
+	virtual void Execute() = 0;
+	virtual void Undo() = 0;
 };
 
 #endif

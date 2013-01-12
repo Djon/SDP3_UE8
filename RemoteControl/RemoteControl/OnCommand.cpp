@@ -1,14 +1,37 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : Object.cpp
+// Workfile : OnCommand.cpp
 // Author : Reinhard Penn, Bernhard Selymes
 // Date : 11.01.2012
-// Description : Baseclass with protected constructor
+// Description : Implementation of class OnCommand
 ///////////////////////////////////////////////////////////////////////////
 
-#include "Object.h"
+#include <iostream>
+#include <string>
+#include "OnCommand.h"
 
-Object::Object() 
-{}
+OnCommand::OnCommand(BaseDevice* device)
+{
+	try
+	{
+		if(device == 0)
+		{
+			std::string error = "no valid pointer";
+			throw (error); 
+		}
+		mDevice = device;
+	}
+	catch (std::string const& error)
+	{
+		std::cout << "Error in OnCommand::OnCommand: " << error << std::endl;
+	}
+}
+	
+void OnCommand::Execute()
+{
+	mDevice->TurnOn();
+}
 
-Object::~Object() 
-{}
+void OnCommand::Undo()
+{
+	mDevice->UndoAction();
+}
