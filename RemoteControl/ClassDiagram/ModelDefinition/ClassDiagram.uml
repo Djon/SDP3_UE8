@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="cf01b95c-73ea-4d00-87a1-87348d95821d"
   name="ClassDiagram" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -262,15 +262,29 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="43c243f5-434b-4d33-a198-7c26037cbcb5"
+                  Id="398d29ee-91d8-4be1-b6cb-28754f37be60"
                   name="IDevice*"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a68b7705-040c-48f4-95e9-ea2a10a11651"
+                  Id="ab783a85-40d3-4bd0-a661-b03fbe0c7248"
                   name="size_t"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a59a4255-9c84-404b-96e4-ad517a10b5e2"
+                  name="ICommand*"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="860f93a9-c521-410b-bed7-8e9096348523"
+                  name="ICommand*"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
@@ -297,6 +311,13 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                       LastKnownLocation="ClassDiagram.uml" />
                   </type_NamedElement>
                 </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a09f33b6-9525-4ae7-aa11-ced93d97224b"
+                  name="ostream&amp;"
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -649,6 +670,14 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="d5653871-4780-451b-b8c0-9624fd9e0cb0"
+            name="RemoteControl"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1893,6 +1922,54 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                     <undefinedTypeMoniker
                       Id="1bc556ea-21ed-4164-9eea-7d575c8cde87"
                       LastKnownName="void"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="eff3972b-0df0-45f2-a85d-9330df2c73b4"
+            name="GetOffCommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3ad5c029-86a6-4b22-9025-a644f03fcdc9"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0441648a-3978-448b-8ec1-3b8f14c3feca"
+                      LastKnownName="ICommand*"
+                      LastKnownLocation="ClassDiagram.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="9351950f-309d-4d76-8e19-5986ecf8da8e"
+            name="GetOnCommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="80f5efa8-264f-4d07-8e4b-7f064d3e1886"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0441648a-3978-448b-8ec1-3b8f14c3feca"
+                      LastKnownName="ICommand*"
                       LastKnownLocation="ClassDiagram.uml" />
                   </type_NamedElement>
                 </parameter>

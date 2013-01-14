@@ -1,21 +1,36 @@
 ///////////////////////////////////////////////////////////////////////////
-// Workfile : Object.h
+// Workfile : Slot.h
 // Author : Reinhard Penn, Bernhard Selymes
 // Date : 11.01.2012
-// Description : Header of Object.cpp
+// Description : Header of Slot.cpp
 ///////////////////////////////////////////////////////////////////////////
 
-//#ifndef OBJECT_H
-//#define OBJECT_H
-//
-//class Object
-//{
-//public:
-//	//virtual Destructor for baseclass
-//	virtual ~Object();
-//protected:
-//	//Default CTor for baseclass
-//	Object();
-//};
-//
-//#endif
+#ifndef SLOT_H
+#define SLOT_H
+
+#include "Object.h"
+#include "ICommand.h"
+
+class Slot :
+	public Object
+{
+public:
+	//Default CTor for baseclass
+	Slot();
+
+	//DTor
+	~Slot();
+
+	void ClickedOff();
+	void ClickedOn();
+	void SetCommands(ICommand* OnCommand, ICommand* OffCommand);
+	
+	ICommand* GetOnCommand() const;
+	ICommand* GetOffCommand() const;
+
+private:
+	ICommand* mOnCommand;
+	ICommand* mOffCommand;
+};
+
+#endif

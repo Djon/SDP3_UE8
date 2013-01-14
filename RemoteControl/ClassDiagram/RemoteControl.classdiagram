@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a2ba65cc-1dc0-4bff-9c6c-aa558af37ffd" name="RemoteControl" linkedPackageId="85c75c38-7377-41ee-92a7-18a336d47447" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a2ba65cc-1dc0-4bff-9c6c-aa558af37ffd" name="RemoteControl" linkedPackageId="85c75c38-7377-41ee-92a7-18a336d47447" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="5978bc0c-a3ed-43c7-99a2-3b1208c08acc">
       <elementDefinition Id="acc8ca72-9e61-4975-906b-a523b7dd9806" />
@@ -131,13 +131,23 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="cb0663f5-b32c-4c40-beb2-2f26d7244d86" name="IDevice*" direction="In" isUnique="false">
-                  <elementDefinition Id="43c243f5-434b-4d33-a198-7c26037cbcb5" />
+                <parameter Id="3d2ada4e-821c-4487-b866-616d63a7c395" name="IDevice*" direction="In" isUnique="false">
+                  <elementDefinition Id="398d29ee-91d8-4be1-b6cb-28754f37be60" />
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="8d5d41c9-d916-4baa-9221-2ecffe4de856" name="size_t" direction="In" isUnique="false">
-                  <elementDefinition Id="a68b7705-040c-48f4-95e9-ea2a10a11651" />
+                <parameter Id="32d82bb2-c63d-49ba-ba0f-b4968ce562cc" name="size_t" direction="In" isUnique="false">
+                  <elementDefinition Id="ab783a85-40d3-4bd0-a661-b03fbe0c7248" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="bc6d2e86-3557-40bb-ab31-a0ed007ec7d4" name="ICommand*" direction="In" isUnique="false">
+                  <elementDefinition Id="a59a4255-9c84-404b-96e4-ad517a10b5e2" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="653c8f31-306e-443a-889d-4c31e24e09a7" name="ICommand*" direction="In" isUnique="false">
+                  <elementDefinition Id="860f93a9-c521-410b-bed7-8e9096348523" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -151,6 +161,11 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                   <type_NamedElement>
                     <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7d4d7669-d487-4c50-8bc8-2214ffbd6eb7" name="ostream&amp;" direction="In" isUnique="false">
+                  <elementDefinition Id="a09f33b6-9525-4ae7-aa11-ced93d97224b" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -317,6 +332,9 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
+          </operation>
+          <operation Id="f180153a-9266-472a-8200-8b5c78768402" name="RemoteControl" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d5653871-4780-451b-b8c0-9624fd9e0cb0" />
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -998,6 +1016,32 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                   <elementDefinition Id="75f50a94-9bb8-47a7-ae8b-a98106270510" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="be0827e2-7be8-4444-8fd5-0f05113d597e" name="GetOffCommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="eff3972b-0df0-45f2-a85d-9330df2c73b4" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ca361faa-a1c7-4cba-bcc8-d1235f888255" direction="Return" isUnique="false">
+                  <elementDefinition Id="3ad5c029-86a6-4b22-9025-a644f03fcdc9" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="f89e8e37-234b-4274-8c2f-74e140deff65" LastKnownName="ICommand*" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="e1544697-865c-4533-9644-a70c16ff51c4" name="GetOnCommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9351950f-309d-4d76-8e19-5986ecf8da8e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="62a4b3f0-dfc0-41d0-ab7d-aadbaf6b226d" direction="Return" isUnique="false">
+                  <elementDefinition Id="80f5efa8-264f-4d07-8e4b-7f064d3e1886" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="f89e8e37-234b-4274-8c2f-74e140deff65" LastKnownName="ICommand*" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>

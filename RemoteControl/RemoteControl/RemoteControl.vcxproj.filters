@@ -60,13 +60,13 @@
     <ClInclude Include="RemoteControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Slot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Stereo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Slot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
