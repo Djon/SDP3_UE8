@@ -17,7 +17,7 @@
 
 typedef std::list<IDevice*> TDevices;
 
-std::string DivLine("-----------------------");
+std::string const DivLine("-----------------------");
 
 class Client :
 	public Object
@@ -32,7 +32,7 @@ public:
 	void AddDevice(IDevice* Device, size_t SlotNumber, ICommand* OnCommand, ICommand* OffCommand);
 	void PrintDeviceInfo(std::ostream& stream);
 	void PrintInterface();
-	void Process(std::string& Input);
+	void Process(std::string& Input, std::ostream& stream = std::cout);
 private:
 	TDevices mDevices;
 	RemoteControl* mRemote;

@@ -295,13 +295,6 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="dab74cc8-e578-4b90-8e6f-051fa08c52de"
-                  name="string&amp;"
-                  direction="In"
-                  isUnique="false" />
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
                   Id="08bcf3f1-e68f-4c35-8bab-bde3a0aecfdf"
                   direction="Return"
                   isUnique="false">
@@ -311,6 +304,27 @@
                       LastKnownName="void"
                       LastKnownLocation="ClassDiagram.uml" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="918cc9f3-8435-46c3-ab74-3c84d5e756e1"
+                  name="string&amp;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3f082506-4b60-443c-a840-945be4ec56dc"
+                  name="ostream&amp;"
+                  direction="In"
+                  isUnique="false">
+                  <defaultValue>
+                    <literalString
+                      Id="8a6d0837-ffc6-4071-9a1d-863e6f161716"
+                      name="DefaultValue"
+                      value="cout" />
+                  </defaultValue>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>

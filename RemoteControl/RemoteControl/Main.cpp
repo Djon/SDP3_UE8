@@ -14,13 +14,55 @@
 #include "TV.h"
 #include "Stereo.h"
 
+#include "Client.h"
+
 #include <vld.h>
 
 using namespace std;
 
+
+void EmptyTestcase()
+{
+	try
+	{
+	cout << "Testcase0: Empty testcase with NULL pointer." << endl;
+
+	Client c;
+	string s(" ");
+
+	cout << "Print Interface:" << endl;
+	c.PrintInterface();
+
+	cout << "Add Device:" << endl;
+	c.AddDevice(0,0,0,0);
+
+	cout << "Print Device Info:" << endl;
+	c.PrintDeviceInfo(cout);
+
+	cout << "Process";
+	c.Process(s);
+
+	cout << endl << endl;
+	}
+	catch(std::bad_alloc& ex)
+	{
+		cout << ex.what() << endl;
+	}
+	catch(std::string const& ex)
+	{
+		cout << ex << endl;
+	}
+	catch(...)
+	{
+		cout << "Unhandled exception occured";
+	}
+}
+
 int main()
 {
-	//statische Variante
+	EmptyTestcase();
+
+	/*//statische Variante
 	Stereo stereo;
 	
 	OnCommand	 onCommandStereo(&stereo);
@@ -46,7 +88,7 @@ int main()
 	macroCommandStereoOffClose.Execute();
 	stereo.Info(cout);
 	macroCommandStereoOffClose.Undo();
-	stereo.Info(cout);
+	stereo.Info(cout);*/
 
 	/*
 	andere Variante: dynamisch

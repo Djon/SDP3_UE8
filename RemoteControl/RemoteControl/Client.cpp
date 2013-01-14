@@ -81,21 +81,21 @@ void Client::PrintDeviceInfo(std::ostream& stream)
 
 void Client::PrintInterface()
 {
-		std::cout << "Remote control:" << std::endl;
-		std::cout << DivLine << std::endl;
-		std::cout << "1...TV" << std::endl;
-		std::cout << "2...Heating" << std::endl;
-		std::cout << "3...empty" << std::endl;
-		std::cout << "4...Stereo" << std::endl;
-		std::cout << "5...empty" << std::endl;
-		std::cout << "6...empty" << std::endl;
-		std::cout << "u...undo" << std::endl;
-		std::cout << "i...output device info" << std::endl;
-		std::cout << DivLine << std::endl;
-		std::cout << "input slot number and on(’o’) or off(’f’):" << std::endl;
+	std::cout << "Remote control:" << std::endl;
+	std::cout << DivLine << std::endl;
+	std::cout << "1...TV" << std::endl;
+	std::cout << "2...Heating" << std::endl;
+	std::cout << "3...empty" << std::endl;
+	std::cout << "4...Stereo" << std::endl;
+	std::cout << "5...empty" << std::endl;
+	std::cout << "6...empty" << std::endl;
+	std::cout << "u...undo" << std::endl;
+	std::cout << "i...output device info" << std::endl;
+	std::cout << DivLine << std::endl;
+	std::cout << "input slot number and on(’o’) or off(’f’):" << std::endl;
 }
 
-void Client::Process(std::string& Input)
+void Client::Process(std::string& Input, std::ostream& stream)
 {
 	try
 	{
@@ -109,7 +109,36 @@ void Client::Process(std::string& Input)
 		} 
 		else if (Input[0] == 'i')
 		{
-
+			PrintDeviceInfo(stream);
+		} 
+		else if (Input.size() >= 2)
+		{
+			for (int i=0; i<MaxSlots; ++i)
+			{
+				if (Input[0] == (char)(i+1))
+				{
+					if (Input[1] == 'o')
+					{
+						mRemote->OnButtonPressed(i+1);
+					}
+					else if (Input[1] == 'f')
+					{
+						mRemote->OffButtonPressed(i+1);
+					}
+					else
+					{
+						throw std::string("Client::Process: Input is not valid");
+					}
+				}
+				else
+				{
+					throw std::string("Client::Process: Input is not valid");
+				}
+			}
+		} 
+		else
+		{
+			throw std::string("Client::Process: Input is not valid");
 		}
 	}
 	catch(std::string const& ex)

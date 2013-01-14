@@ -137,16 +137,26 @@
             <elementDefinition Id="334974a2-5511-423f-acd5-01ddc382f0ce" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="a34421ea-f7cf-48e6-8598-69785700fad3" name="string&amp;" direction="In" isUnique="false">
-                  <elementDefinition Id="dab74cc8-e578-4b90-8e6f-051fa08c52de" />
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
                 <parameter Id="f97220be-3f3a-4110-8624-054b0570991e" direction="Return" isUnique="false">
                   <elementDefinition Id="08bcf3f1-e68f-4c35-8bab-bde3a0aecfdf" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="1ea57d77-d784-4985-b067-5278a2671d43" LastKnownName="void" />
                   </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6570704f-1bd3-4fc9-9110-2ef91d816225" name="string&amp;" direction="In" isUnique="false">
+                  <elementDefinition Id="918cc9f3-8435-46c3-ab74-3c84d5e756e1" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e840efde-7a00-40e7-a515-25e1c344a586" name="ostream&amp;" direction="In" isUnique="false">
+                  <elementDefinition Id="3f082506-4b60-443c-a840-945be4ec56dc" />
+                  <defaultValue>
+                    <literalString Id="097ec86e-8932-47f9-b80f-3df2468a3ad4" name="DefaultValue" value="cout">
+                      <elementDefinition Id="8a6d0837-ffc6-4071-9a1d-863e6f161716" />
+                    </literalString>
+                  </defaultValue>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
