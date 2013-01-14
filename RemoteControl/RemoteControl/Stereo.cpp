@@ -20,11 +20,11 @@ void Stereo::Info(std::ostream& stream)
 	{
 		if(mDriveState == eOpened)
 		{
-			stream << "Stereo is On" << "  " << "CD is opened" <<  std::endl;
+			stream << "Stereo is On" << " " << "CD is opened" <<  std::endl;
 		}
 		else
 		{
-			stream << "Stereo is On" << "  " << "CD is closed" <<  std::endl;
+			stream << "Stereo is On" << " " << "CD is closed" <<  std::endl;
 		}
 	}
 	else 

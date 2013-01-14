@@ -5,6 +5,7 @@
 // Description : Implemantation of class Slot
 ///////////////////////////////////////////////////////////////////////////
 
+#include <string>
 #include "Slot.h"
 
 Slot::Slot()
@@ -13,12 +14,12 @@ Slot::Slot()
 
 void Slot::ClickedOff()
 {
-	mOffCommand == 0 ? throw("Slot::ClickedOff: mOffCommand is a null pointer") : mOffCommand->Execute();
+	mOffCommand == 0 ? throw std::string("Slot::ClickedOff: mOffCommand is a null pointer") : mOffCommand->Execute();
 }
 
 void Slot::ClickedOn()
 {
-	mOnCommand == 0 ? throw("Slot::ClickedOn: mOnCommand is a null pointer") : mOnCommand->Execute();
+	mOnCommand == 0 ? throw std::string("Slot::ClickedOn: mOnCommand is a null pointer") : mOnCommand->Execute();
 }
 
 void Slot::SetCommands(ICommand* OnCommand, ICommand* OffCommand)
