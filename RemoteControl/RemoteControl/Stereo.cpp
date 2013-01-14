@@ -11,39 +11,32 @@
 
 void Stereo::Info(std::ostream& stream)
 {
-	try
+	if(stream == 0)
 	{
-		if(stream == 0)
+		std::string error = "Error in Stereo::Info: no valid stream";
+		throw (error); 
+	}
+	if(mState == eOn)
+	{
+		if(mDriveState == eOpened)
 		{
-			std::string error = "no valid stream";
-			throw (error); 
+			stream << "Stereo is On" << "  " << "CD is opened" <<  std::endl;
 		}
-		if(mState == eOn)
+		else
 		{
-			if(mDriveState == eOpened)
-			{
-				stream << "Stereo is On" << "  " << "CD is opened" <<  std::endl;
-			}
-			else
-			{
-				stream << "Stereo is On" << "  " << "CD is closed" <<  std::endl;
-			}
-		}
-		else 
-		{
-			if(mDriveState == eOpened)
-			{
-				stream << "Stereo is Off" << " " << "CD is opened" <<  std::endl;
-			}
-			else
-			{
-				stream << "Stereo is Off" << " " << "CD is closed" <<  std::endl;
-			}
+			stream << "Stereo is On" << "  " << "CD is closed" <<  std::endl;
 		}
 	}
-	catch (std::string const& error)
+	else 
 	{
-		std::cout << "Error in Stereo::Info: " << error << std::endl;
+		if(mDriveState == eOpened)
+		{
+			stream << "Stereo is Off" << " " << "CD is opened" <<  std::endl;
+		}
+		else
+		{
+			stream << "Stereo is Off" << " " << "CD is closed" <<  std::endl;
+		}
 	}
 }
 

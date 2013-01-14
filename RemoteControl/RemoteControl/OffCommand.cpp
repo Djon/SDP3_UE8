@@ -11,19 +11,12 @@
 
 OffCommand::OffCommand(BaseDevice* device)
 {
-	try
+	if(device == 0)
 	{
-		if(device == 0)
-		{
-			std::string error = "no valid pointer";
-			throw (error); 
-		}
-		mDevice = device;
+		std::string error = "Error in OffCommand::OffCommand: no valid pointer";
+		throw (error); 
 	}
-	catch (std::string const& error)
-	{
-		std::cout << "Error in OffCommand::OffCommand: " << error << std::endl;
-	}
+	mDevice = device;
 }
 	
 void OffCommand::Execute()

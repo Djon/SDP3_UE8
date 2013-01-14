@@ -11,19 +11,12 @@
 
 CloseCommand::CloseCommand(Stereo* stereo)
 {
-	try
+	if(stereo == 0)
 	{
-		if(stereo == 0)
-		{
-			std::string error = "no valid pointer";
-			throw (error); 
-		}
-		mStereo = stereo;
+		std::string error = "Error in CloseCommand::CloseCommand: no valid pointer";
+		throw (error); 
 	}
-	catch (std::string const& error)
-	{
-		std::cout << "Error in CloseCommand::CloseCommand: " << error << std::endl;
-	}
+	mStereo = stereo;
 }
 	
 void CloseCommand::Execute()

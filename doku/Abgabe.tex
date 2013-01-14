@@ -252,91 +252,141 @@ Rückgabetyp: void
 Mit dieser Methode werden die Slots der Fernbedienung programmiert, das heißt die Kommandos werden zugewiesen.
 \\
 
-%--------------------------------------------------------------
-
 \subsection {Klasse "Slot"}
-Konkrete Klassen von Kraftfahrzeugen.
+Speichert einen Pointer auf ein On- und ein Offkommando. Hat 2 Get-Methoden für diese und einen Destruktor der sie freigibt.
 \\
 
-\textbf {Methode "Print": } 
+\textbf {Konstruktor "Slot": } 
+\newline
+Weißt den Kommandozeigern 0 zu.
+\\
+
+\textbf {Methode "ClickedOff": } 
 \newline
 Schnittstelle:
 \newline
-Parameter: ostream\&
+Rückgabetyp: void
+\newline
+Überprüft den Pointer und ruft "Execute" vom Off-Kommando auf.
+\\
+
+\textbf {Methode "ClickedOn": } 
+\newline
+Schnittstelle:
 \newline
 Rückgabetyp: void
 \newline
-Wird je nach Klassen entsprechend implementiert. Gibt aus um welche Klasse es sich handelt und danach die entsprechenden Daten des Fahrzeugs.
+Überprüft den Pointer und ruft "Execute" vom On-Kommando auf.
 \\
+
+\textbf {Methode "SetCommands": } 
+\newline
+Schnittstelle:
+\newline
+Parameter: ICommand*, ICommand*
+\newline
+Rückgabetyp: void
+\newline
+Weist die Kommandos zu.
+\\
+
+\subsection {Interface "ICommand"}
+Schnittstellendefiniton. Hat einen virtuellen Destruktor.
+\\
+
+\textbf {Methode "Execute": } 
+\newline
+Schnittstelle:
+\newline
+Rückgabetyp: void
+\\
+
+\textbf {Methode "Undo": } 
+\newline
+Schnittstelle:
+\newline
+Rückgabetyp: void
+\\
+
+\subsection {Klassen "OffCommand, OnCommand, CloseCommand, OpenCommand und NoCommand"}
+Implementieren die Methoden Execute und Undo entsprechend der jeweiligen Klasse. Bei NoCommand wird einfach auf der Konsole ausgegeben, dass es sich um NoCommand handelt. Die anderen Kommandos rufen die entsprechenden Methoden in den Klassen, auf die sie eine Referenz haben, auf.
+Sie haben weiters einen Konstruktor dem diese Referenzen mitgegeben werden.
+\\
+
+\subsection {Klasse "MacroCommand"}
+Hat eine Liste die die Referenzen auf mehrere Kommandos speichert. Der Liste können die Kommandos hinzugefügt werden, aber auch wieder entfernt werden. Es können nur maximal 2 Elemente in der Liste gespeichert werden.
+\\
+
+
 
 
 \newpage
 \section {Source Code}
 
-\lstinputlisting[language=C++]{\CodePath Object.h}
-\lstinputlisting[language=C++]{\CodePath Object.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath ICar.h}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath ConcreteCar.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath ConcreteCar.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath SmallCar.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath SmallCar.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath MiddleRangeCar.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath MiddleRangeCar.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath PremiumCar.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath PremiumCar.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath SUV.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath SUV.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath Decorator.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath Decorator.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath Decorator_AirConditioner.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath Decorator_AirConditioner.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath Decorator_Navi.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath Decorator_Navi.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath Decorator_Speedometer.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath Decorator_Speedometer.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath Decorator_Xenion.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath Decorator_Xenion.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath CarRental.h}
-\newpage
-\lstinputlisting[language=C++]{\CodePath CarRental.cpp}
-\newpage
-
-\lstinputlisting[language=C++]{\CodePath Main.cpp}
-\newpage
+%\lstinputlisting[language=C++]{\CodePath Object.h}
+%\lstinputlisting[language=C++]{\CodePath Object.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath ICar.h}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath ConcreteCar.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath ConcreteCar.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath SmallCar.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath SmallCar.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath MiddleRangeCar.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath MiddleRangeCar.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath PremiumCar.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath PremiumCar.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath SUV.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath SUV.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath Decorator.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath Decorator.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath Decorator_AirConditioner.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath Decorator_AirConditioner.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath Decorator_Navi.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath Decorator_Navi.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath Decorator_Speedometer.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath Decorator_Speedometer.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath Decorator_Xenion.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath Decorator_Xenion.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath CarRental.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath CarRental.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath Main.cpp}
+%\newpage
 
 \section {Testausgaben} 
 

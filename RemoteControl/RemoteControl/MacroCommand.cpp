@@ -28,34 +28,25 @@ void MacroCommand::Undo()
 
 void MacroCommand::Add(ICommand* command)
 {
-	try
+	if(command == 0)
 	{
-		if(command == 0)
-		{
-			std::string error = "no valid pointer";
-			throw (error); 
-		}
-		mCommands.push_back(command);
+		std::string error = "Error in MacroCommand::Add: no valid pointer";
+		throw (error); 
 	}
-	catch (std::string const& error)
+	if(mCommands.size() >= 2)
 	{
-		std::cout << "Error in MacroCommand::Add: " << error << std::endl;
+		std::string error = "Error in MacroCommand::Add: only two entries are allowed";
+		throw (error); 
 	}
+	mCommands.push_back(command);
 }
 
 void MacroCommand::Remove(ICommand* command)
 {
-	try
+	if(command == 0)
 	{
-		if(command == 0)
-		{
-			std::string error = "no valid pointer";
-			throw (error); 
-		}
-		mCommands.remove(command);
+		std::string error = "Error in MacroCommand::Remove: no valid pointer";
+		throw (error); 
 	}
-	catch (std::string const& error)
-	{
-		std::cout << "Error in MacroCommand::Remove: " << error << std::endl;
-	}
+	mCommands.remove(command);
 }

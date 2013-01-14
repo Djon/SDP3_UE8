@@ -11,24 +11,17 @@
 
 void TV::Info(std::ostream& stream)
 {
-	try
+	if(stream == 0)
 	{
-		if(stream == 0)
-		{
-			std::string error = "no valid stream";
-			throw (error); 
-		}
-		if(mState == eOn)
-		{
-			stream << "TV is On" << std::endl;
-		}
-		else 
-		{
-			stream << "TV is Off" << std::endl;
-		}
+		std::string error = "Error in TV::Info: no valid stream";
+		throw (error); 
 	}
-	catch (std::string const& error)
+	if(mState == eOn)
 	{
-		std::cout << "Error in TV::Info: " << error << std::endl;
+		stream << "TV is On" << std::endl;
+	}
+	else 
+	{
+		stream << "TV is Off" << std::endl;
 	}
 }

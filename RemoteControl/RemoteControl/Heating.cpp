@@ -11,24 +11,17 @@
 
 void Heating::Info(std::ostream& stream)
 {
-	try
+	if(stream == 0)
 	{
-		if(stream == 0)
-		{
-			std::string error = "no valid stream";
-			throw (error); 
-		}
-		if(mState == eOn)
-		{
-			stream << "Heating is On" << std::endl;
-		}
-		else 
-		{
-			stream << "Heating is Off" << std::endl;
-		}
+		std::string error = "Error in Heating::Info: no valid stream";
+		throw (error); 
 	}
-	catch (std::string const& error)
+	if(mState == eOn)
 	{
-		std::cout << "Error in Heating::Info: " << error << std::endl;
+		stream << "Heating is On" << std::endl;
+	}
+	else 
+	{
+		stream << "Heating is Off" << std::endl;
 	}
 }
