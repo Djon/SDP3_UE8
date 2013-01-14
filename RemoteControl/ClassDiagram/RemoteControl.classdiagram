@@ -1,42 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a2ba65cc-1dc0-4bff-9c6c-aa558af37ffd" name="RemoteControl" linkedPackageId="85c75c38-7377-41ee-92a7-18a336d47447" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <ownedCommentsInternal>
-    <comment Id="5978bc0c-a3ed-43c7-99a2-3b1208c08acc">
-      <elementDefinition Id="acc8ca72-9e61-4975-906b-a523b7dd9806" />
-      <body>stereanlage bei open und close auch nur device?</body>
-    </comment>
-    <comment Id="ba09fc00-ac36-42dd-a383-d06d9b36a1e1">
-      <elementDefinition Id="9a4b80ae-6b94-4477-8311-8ee014905736" />
-      <body>bei SetCommands überprüfen ob commands zulässig</body>
-    </comment>
-    <comment Id="4d7d263e-c95c-494f-8628-52aa0c93f6fb">
-      <elementDefinition Id="fdcba7a1-7f98-476a-887b-021fb181cffd" />
-      <body>mLastCommand von Slot nach RemoteControl verschoben,
-mLastPressedButton gelöscht
-weil: im Command ist device gespeichert</body>
-    </comment>
-    <comment Id="5ffaa86b-b918-4f4d-92db-cb967137a490">
-      <elementDefinition Id="b4e4d237-00c9-4fc3-824c-1dd15b125e91" />
-      <body>bei On/OffButtonPressed
-wir das jeweilige command vom slot im LastCommand gespeichert</body>
-    </comment>
-    <comment Id="a0d9aee6-b8ac-415c-8581-875c0804c3c6">
-      <elementDefinition Id="e21c87a8-52b9-42d4-a9f2-ffe5e08c1fda" />
-      <body>mLastState von Commands nach Device verschoben</body>
-    </comment>
-    <comment Id="4d0f41da-887f-458b-9ba7-9faaae48f8c5">
-      <elementDefinition Id="8d3bf061-0440-4f85-b2ac-55c3ad70d36c" />
-      <body>wenn UndoButtonPressed dann mLastCommand auf 0 setzen weil nur einmal UndoButtonPressed sein darf</body>
-    </comment>
-    <comment Id="a6bf7437-28cd-43b9-981b-d8eb0200628b">
-      <elementDefinition Id="5563f6ff-9078-450c-ac01-4c68f52246fa" />
-      <body>Im Konstruktor werden States auf Off gesetzt</body>
-    </comment>
-    <comment Id="6376fb3f-0ad6-48af-98d4-caa946a5b412">
-      <elementDefinition Id="5f949688-2450-4aa1-a8c3-858e62f5b99c" />
-      <body>keine überprüfung ob gleicher command mit gleichem device schon drinnen</body>
-    </comment>
-  </ownedCommentsInternal>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a2ba65cc-1dc0-4bff-9c6c-aa558af37ffd" name="RemoteControl" linkedPackageId="85c75c38-7377-41ee-92a7-18a336d47447" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" name="Object" isAbstract="true" isLeaf="false" isActiveClass="false">
@@ -240,6 +203,22 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="76960100-4e7c-4c00-a49c-caa8097345b4" />
           </association>
+          <association Id="1289e5b0-3bbc-4731-b7c7-b6f7b6e9d3b1" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="35d0c062-38fb-47cc-84ab-76e01458005a" LastKnownName="ICommand" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="221693cd-376e-4a51-a4e1-c7a1d5e7d91d" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ea257a6d-2220-4d17-8922-b995adcf0f00" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="169750e3-e3c6-4088-8bba-95797aabe624" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b4d642cc-9c74-4664-be90-1fc3484c050a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f62b573e-4e9d-4de0-bbbb-7e8e7272c454" />
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="a84dd9a6-340f-4b50-be03-d203d48fecdc" name="mSlots" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -410,9 +389,9 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class Id="0a0bf67f-935b-416a-a6eb-fcd851fed2d5" name="NoCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="97d6ea3f-105f-4985-8aff-3dbd5ee801cf" />
         <suppliersInternal>
-          <interfaceRealization Id="4a0fc533-1352-49f8-a73d-5b906329515f">
+          <interfaceRealization Id="68228d54-0974-4c2a-a47b-10f809f3238d">
             <interfaceMoniker Id="35d0c062-38fb-47cc-84ab-76e01458005a" LastKnownName="ICommand" />
-            <elementDefinition Id="1086ba51-c5d3-45d0-9c1c-bc5966057ed2" />
+            <elementDefinition Id="43da3c97-4196-47d4-b4b2-cdc3ee12e739" />
           </interfaceRealization>
         </suppliersInternal>
         <generalsInternal>
@@ -448,6 +427,9 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="9df0c54f-99a6-4431-9b75-d53001a0a09f" name="~ICommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9f28a459-9d10-4518-9902-ce66f1d27d39" />
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -460,33 +442,33 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class Id="cc7b7822-0629-49c1-8b7d-a5e29bcefa3a" name="OnCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="208f3600-1fd9-49c4-ae34-ec3e188743fc" />
         <suppliersInternal>
-          <interfaceRealization Id="3270cbbe-aa43-47c2-9023-3f2c1b987864">
+          <interfaceRealization Id="9538ddcd-1605-4210-8efd-82a1c210203f">
             <interfaceMoniker Id="35d0c062-38fb-47cc-84ab-76e01458005a" LastKnownName="ICommand" />
-            <elementDefinition Id="116bdcf6-e89f-4ac8-8f2e-812186c67568" />
+            <elementDefinition Id="90b43b72-fffe-4737-aea7-f49f1f10ae74" />
           </interfaceRealization>
         </suppliersInternal>
         <generalsInternal>
-          <generalization Id="aaf9dd2f-623a-4095-b8a0-ce3ecbd1bd08" isSubstitutable="false">
+          <generalization Id="a91f7689-a409-4612-afd0-4654150cf7a5" isSubstitutable="false">
             <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
-            <elementDefinition Id="685d6e08-a1f1-4d0d-a8dc-6ccdedfc5f57" />
+            <elementDefinition Id="730bb6be-ae41-4fbf-b73f-9d1c5f848d6e" />
           </generalization>
         </generalsInternal>
         <targetEnds>
-          <association Id="58cb667a-17e0-492d-a0d3-9e2de8508a54" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
+          <association Id="38ff6ff3-9cf1-4cf7-bfeb-a3c9347050b0" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="c5bfda6c-0a9b-46c4-abb7-b7cfb7f90f0f" LastKnownName="BaseDevice" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="801f6e9c-0f29-4454-bdd6-9524929281ef" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="aa55b9a8-4d92-4b5e-9c5a-f88bd793f344" />
+                <memberEnd Id="797c6457-da01-4eb1-b203-06056be0827e" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="194a998a-3cb6-4e93-af6a-406c5605339f" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="9ed51b0d-84ce-4a3f-8d15-b811e7da92a2" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="312edaff-2ec3-4475-bbfa-8a8592d044c1" />
+                <memberEnd Id="8e9234fc-2a8d-41cc-a59e-338508263b45" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="085e5d9a-22f1-4616-95e6-7170ee8c6df9" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="321c60c5-e0da-49e6-99e8-55c62f428b3f" />
+            <elementDefinition Id="e2bd7c48-09ab-46b0-b231-5fae559ef8e4" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -534,6 +516,9 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="466b1598-69ec-4a9b-906e-8092ba8a48b0" name="~ICommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="dfbf4ac5-d5cb-4960-8970-dce6237dca43" />
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -546,33 +531,33 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class Id="5e6be40c-033f-4420-9dda-0a76a995ec6c" name="OffCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="f97d6a89-f9d2-41a9-acc2-ea8dba567ec1" />
         <suppliersInternal>
-          <interfaceRealization Id="2ea35024-4cb7-46ab-9339-904b228f933b">
+          <interfaceRealization Id="afd8e81a-57d1-473a-8738-bb6d150bbc09">
             <interfaceMoniker Id="35d0c062-38fb-47cc-84ab-76e01458005a" LastKnownName="ICommand" />
-            <elementDefinition Id="f62206e3-e5e6-43db-b3fa-7f16e6da9483" />
+            <elementDefinition Id="8c6e71d0-3616-47c5-9f28-7d4fd8651fd5" />
           </interfaceRealization>
         </suppliersInternal>
         <generalsInternal>
-          <generalization Id="ea671488-186e-4dbc-8ac0-9ae2dd970bad" isSubstitutable="false">
+          <generalization Id="82dcf0bf-507d-46ca-9429-0da0e0c7bc37" isSubstitutable="false">
             <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
-            <elementDefinition Id="ecfad441-9fdc-4dcd-ae05-3a2752935042" />
+            <elementDefinition Id="5d514773-6781-4d3e-9115-76576fda4980" />
           </generalization>
         </generalsInternal>
         <targetEnds>
-          <association Id="55e1297a-95f8-4156-9527-aa9e4ca9fec7" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
+          <association Id="d592515e-b054-4b55-b586-8ff10b00c563" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="c5bfda6c-0a9b-46c4-abb7-b7cfb7f90f0f" LastKnownName="BaseDevice" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="e0eb643f-f1d2-4996-8f32-2933cc02a952" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="7e43e304-55f1-4ea3-b664-cea722ca5450" />
+                <memberEnd Id="9c2d2c74-55f1-46a4-9b46-c1a5e8d7ef4a" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0e88f67e-9fbd-4517-a6b0-8ad7a165fe02" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="d0c70ffa-1d68-43cc-8279-6ceebd1d7e32" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="c19e660e-1be4-4c7b-a38c-96483c8613e2" />
+                <memberEnd Id="4e9825fb-6b22-4c3c-a68b-97ca72490283" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2eff15e5-2e4c-456d-a3ea-820eae90acb4" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="a2412aad-4cea-441c-8d24-e1cf28e2c0eb" />
+            <elementDefinition Id="bef5458e-3ff1-435f-95e4-311d070ea3bd" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -620,6 +605,9 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="064eb7a5-1119-4c34-a60e-2ee0d1230a7e" name="~ICommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="4b5e8418-28fd-4d67-8598-a86121fff839" />
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -632,33 +620,27 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class Id="bc935afd-68d3-4833-ba59-bfc4886775e6" name="OpenCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="cda52c15-dfc3-4248-b34b-8b37a45ad53f" />
         <suppliersInternal>
-          <interfaceRealization Id="eb09d66e-bf17-4b85-8d95-7e7412edf33e">
+          <interfaceRealization Id="c0254ccf-5d82-4e46-a235-1fa250f0e095">
             <interfaceMoniker Id="35d0c062-38fb-47cc-84ab-76e01458005a" LastKnownName="ICommand" />
-            <elementDefinition Id="ee814c07-5fb2-4112-b54e-4c277bac6930" />
+            <elementDefinition Id="2175271a-6006-4cd7-a081-996ec89364ae" />
           </interfaceRealization>
         </suppliersInternal>
-        <generalsInternal>
-          <generalization Id="ec69acff-d723-41f6-a704-0dd338f8aa43" isSubstitutable="false">
-            <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
-            <elementDefinition Id="9c7cfcc1-f1e4-4f40-bf3e-930f3d420607" />
-          </generalization>
-        </generalsInternal>
         <targetEnds>
-          <association Id="a1538e00-69b1-4f86-be2b-4fbed9aea2c5" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
+          <association Id="cef21e99-ac2b-4f3c-ba05-da2e4c9f32cd" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="11b2b935-269e-4db8-94e9-7e77bee4bcf4" LastKnownName="Stereo" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="f41c4c94-e376-4028-b4af-226227cc8b67" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="f81b847e-ddcd-4efd-b225-52ca33de13ca" />
+                <memberEnd Id="83409ac7-e494-43c4-b380-aac273fc7680" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="aa745460-b7d0-4e76-9b1a-d41150dae75c" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="9d876db4-159f-485c-bf43-8a9822d696bc" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="d32ab795-1f6c-425e-b554-0cfe8023ada9" />
+                <memberEnd Id="6f72e696-de4f-4378-9b0b-7a4bc861e824" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="99dd79c9-77c3-4dc4-87bc-14f3e095bdff" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="10950c1e-2611-4917-b015-c852cfa444c9" />
+            <elementDefinition Id="f47bfb25-1674-4c01-b332-be3a6fcfc970" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -706,6 +688,9 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="a622a4ec-a5a3-4341-82fe-f2be27f98612" name="~ICommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="24d585b3-0a5c-4beb-b5ba-84d2792a2f10" />
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -718,33 +703,27 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class Id="d323b3e7-58c7-4dc5-a964-dfeaa549bac1" name="CloseCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="4f35dfa8-2e76-42e7-88e4-2e8f73469a02" />
         <suppliersInternal>
-          <interfaceRealization Id="4345f0fa-5a0c-4e72-a632-72af5820df13">
+          <interfaceRealization Id="d2147362-e3e7-49e1-829a-88b118152c9d">
             <interfaceMoniker Id="35d0c062-38fb-47cc-84ab-76e01458005a" LastKnownName="ICommand" />
-            <elementDefinition Id="abc10b89-ffa7-4935-9f1e-62b4c0da2558" />
+            <elementDefinition Id="ac20b96c-e889-4add-a023-49691fc242df" />
           </interfaceRealization>
         </suppliersInternal>
-        <generalsInternal>
-          <generalization Id="bdbb2fca-6c21-4b84-8bec-c7c07cff757a" isSubstitutable="false">
-            <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
-            <elementDefinition Id="ba9f61b2-f705-4580-9d14-4ef1a2467479" />
-          </generalization>
-        </generalsInternal>
         <targetEnds>
-          <association Id="a5c056b5-455f-4b68-8216-bfc01553d342" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
-            <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
+          <association Id="84feec69-98c1-421f-9702-1bb5bfc1cdbe" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="11b2b935-269e-4db8-94e9-7e77bee4bcf4" LastKnownName="Stereo" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="16722967-6c8b-489a-bc12-9a9a07eb1e70" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="6dab140c-69c6-40b3-bdb0-916997dba7f9" />
+                <memberEnd Id="96b8ed84-71ca-4f66-a4ad-907a682183f3" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4fe4b82f-2345-4e7a-9388-aa64d416d0e6" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="9f73516a-45c6-4da5-aaa4-7a966fb61edd" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="865bcf5b-ec5b-438f-90f7-79ba6d56a21f" />
+                <memberEnd Id="2f64e27d-106a-40c0-8777-024208bfef21" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="14bfa11b-3631-45f4-ae58-35e1c66a8a30" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="9e8a7b84-f921-4aca-bdf4-81a495246e22" />
+            <elementDefinition Id="b3d157d2-c15f-4ac9-96f3-9995801b1304" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -792,6 +771,9 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="529d4841-5434-449e-8d4d-b25a56f005d6" name="~ICommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fc8aa87b-5f92-4619-aca2-06fbbf816994" />
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -804,15 +786,15 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
       <class Id="82cc8502-2a10-44b7-acc2-c258194daf31" name="MacroCommand" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="2cb3a83e-0374-4bd1-a3b6-9c59baa9d4f9" />
         <suppliersInternal>
-          <interfaceRealization Id="5490bb8c-3f05-4b29-b8f3-f054aced303c">
+          <interfaceRealization Id="01dab285-6eff-44bb-adb0-5ec643dff831">
             <interfaceMoniker Id="35d0c062-38fb-47cc-84ab-76e01458005a" LastKnownName="ICommand" />
-            <elementDefinition Id="195c0317-2c21-47ff-afc2-c81ac57ff13a" />
+            <elementDefinition Id="66907710-2655-458d-8558-112ce18621c9" />
           </interfaceRealization>
         </suppliersInternal>
         <generalsInternal>
-          <generalization Id="d784b13f-d9bf-4726-ba4e-ebd92460989d" isSubstitutable="false">
+          <generalization Id="e4f60db0-0c13-4df6-9be8-899df0cfa479" isSubstitutable="false">
             <classMoniker Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" LastKnownName="Object" />
-            <elementDefinition Id="54edfc31-f0e7-47e0-9065-0eb9acd5e1c4" />
+            <elementDefinition Id="ce59c82b-94cd-4937-907a-be052865f7f9" />
           </generalization>
         </generalsInternal>
         <targetEnds>
@@ -913,6 +895,9 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
+          </operation>
+          <operation Id="fcf395cd-47af-431a-8511-5c8dc5bcd02e" name="~ICommand" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="df61da5a-a94f-4be6-8a1d-f92158115f70" />
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -1183,6 +1168,12 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
     <logicalClassDesignerModelHasTypes>
       <class Id="11b2b935-269e-4db8-94e9-7e77bee4bcf4" name="Stereo" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="bf11dec9-1fd2-40c1-8df3-55de43c0baed" />
+        <suppliersInternal>
+          <dependency Id="099a64d2-a573-4aa9-8f53-0d14637b04f7" name="&lt;&lt;use&gt;&gt;">
+            <enumerationMoniker Id="f3313614-3852-4b8a-b7f8-f6fd7d7f7a40" LastKnownName="CDState" />
+            <elementDefinition Id="245d691a-77eb-44c1-bcd7-7c5fcbd12615" />
+          </dependency>
+        </suppliersInternal>
         <generalsInternal>
           <generalization Id="a3a47a7e-3ede-4721-bdc3-580655983c2d" isSubstitutable="false">
             <classMoniker Id="c5bfda6c-0a9b-46c4-abb7-b7cfb7f90f0f" LastKnownName="BaseDevice" />
@@ -1277,6 +1268,10 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
             <interfaceMoniker Id="e12edf66-4d96-4209-ab15-5f0f9428a725" LastKnownName="IDevice" />
             <elementDefinition Id="9a531e5d-90e6-449b-81d4-eda2e7fb72a5" />
           </interfaceRealization>
+          <dependency Id="83595452-e53c-48ad-b376-23c341162103" name="&lt;&lt;use&gt;&gt;">
+            <enumerationMoniker Id="4bb4bb23-b5cf-4f58-87f5-664db7b6b8db" LastKnownName="OnOffState" />
+            <elementDefinition Id="8627c451-cd09-40be-a34d-129b5fa9255c" />
+          </dependency>
         </suppliersInternal>
         <generalsInternal>
           <generalization Id="b6999a8b-a116-4c3e-bde3-aeaaad39e429" isSubstitutable="false">

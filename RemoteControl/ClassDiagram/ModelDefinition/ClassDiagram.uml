@@ -1,45 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="cf01b95c-73ea-4d00-87a1-87348d95821d"
   name="ClassDiagram" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
-  <ownedCommentsInternal>
-    <comment
-      Id="acc8ca72-9e61-4975-906b-a523b7dd9806">
-      <body>stereanlage bei open und close auch nur device?</body>
-    </comment>
-    <comment
-      Id="9a4b80ae-6b94-4477-8311-8ee014905736">
-      <body>bei SetCommands überprüfen ob commands zulässig</body>
-    </comment>
-    <comment
-      Id="fdcba7a1-7f98-476a-887b-021fb181cffd">
-      <body>mLastCommand von Slot nach RemoteControl verschoben,
-mLastPressedButton gelöscht
-weil: im Command ist device gespeichert</body>
-    </comment>
-    <comment
-      Id="b4e4d237-00c9-4fc3-824c-1dd15b125e91">
-      <body>bei On/OffButtonPressed
-wir das jeweilige command vom slot im LastCommand gespeichert</body>
-    </comment>
-    <comment
-      Id="e21c87a8-52b9-42d4-a9f2-ffe5e08c1fda">
-      <body>mLastState von Commands nach Device verschoben</body>
-    </comment>
-    <comment
-      Id="8d3bf061-0440-4f85-b2ac-55c3ad70d36c">
-      <body>wenn UndoButtonPressed dann mLastCommand auf 0 setzen weil nur einmal UndoButtonPressed sein darf</body>
-    </comment>
-    <comment
-      Id="5563f6ff-9078-450c-ac01-4c68f52246fa">
-      <body>Im Konstruktor werden States auf Off gesetzt</body>
-    </comment>
-    <comment
-      Id="5f949688-2450-4aa1-a8c3-858e62f5b99c">
-      <body>keine überprüfung ob gleicher command mit gleichem device schon drinnen</body>
-    </comment>
-  </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -497,6 +460,43 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="f62b573e-4e9d-4de0-bbbb-7e8e7272c454"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="bf4e2729-74ec-4390-8734-e3ce4649f781"
+              LastKnownName="ICommand"
+              LastKnownLocation="ClassDiagram.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ea257a6d-2220-4d17-8922-b995adcf0f00"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b4d642cc-9c74-4664-be90-1fc3484c050a"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -800,7 +800,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         isActiveClass="false">
         <suppliersInternal>
           <interfaceRealization
-            Id="1086ba51-c5d3-45d0-9c1c-bc5966057ed2">
+            Id="43da3c97-4196-47d4-b4b2-cdc3ee12e739">
             <interfaceMoniker
               Id="bf4e2729-74ec-4390-8734-e3ce4649f781"
               LastKnownName="ICommand"
@@ -866,6 +866,14 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="9f28a459-9d10-4518-9902-ce66f1d27d39"
+            name="~ICommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -878,7 +886,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         isActiveClass="false">
         <suppliersInternal>
           <interfaceRealization
-            Id="116bdcf6-e89f-4ac8-8f2e-812186c67568">
+            Id="90b43b72-fffe-4737-aea7-f49f1f10ae74">
             <interfaceMoniker
               Id="bf4e2729-74ec-4390-8734-e3ce4649f781"
               LastKnownName="ICommand"
@@ -887,7 +895,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="685d6e08-a1f1-4d0d-a8dc-6ccdedfc5f57"
+            Id="730bb6be-ae41-4fbf-b73f-9d1c5f848d6e"
             isSubstitutable="false">
             <classMoniker
               Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
@@ -897,20 +905,20 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         </generalsInternal>
         <targetEnds>
           <association
-            Id="321c60c5-e0da-49e6-99e8-55c62f428b3f"
+            Id="e2bd7c48-09ab-46b0-b231-5fae559ef8e4"
             isDerived="false"
             sourceEndRoleName=""
             targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
-            <interfaceMoniker
-              Id="02f2e94c-ff32-4690-b9ad-ed87c16e6988"
-              LastKnownName="IDevice"
+            <classMoniker
+              Id="5d7deb8a-4abe-45b4-8554-9819326d97c0"
+              LastKnownName="BaseDevice"
               LastKnownLocation="ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="aa55b9a8-4d92-4b5e-9c5a-f88bd793f344"
+                  Id="194a998a-3cb6-4e93-af6a-406c5605339f"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -922,7 +930,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="312edaff-2ec3-4475-bbfa-8a8592d044c1"
+                  Id="085e5d9a-22f1-4616-95e6-7170ee8c6df9"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1022,6 +1030,14 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="dfbf4ac5-d5cb-4960-8970-dce6237dca43"
+            name="~ICommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1034,7 +1050,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         isActiveClass="false">
         <suppliersInternal>
           <interfaceRealization
-            Id="f62206e3-e5e6-43db-b3fa-7f16e6da9483">
+            Id="8c6e71d0-3616-47c5-9f28-7d4fd8651fd5">
             <interfaceMoniker
               Id="bf4e2729-74ec-4390-8734-e3ce4649f781"
               LastKnownName="ICommand"
@@ -1043,7 +1059,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="ecfad441-9fdc-4dcd-ae05-3a2752935042"
+            Id="5d514773-6781-4d3e-9115-76576fda4980"
             isSubstitutable="false">
             <classMoniker
               Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
@@ -1053,20 +1069,20 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         </generalsInternal>
         <targetEnds>
           <association
-            Id="a2412aad-4cea-441c-8d24-e1cf28e2c0eb"
+            Id="bef5458e-3ff1-435f-95e4-311d070ea3bd"
             isDerived="false"
             sourceEndRoleName=""
             targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
-            <interfaceMoniker
-              Id="02f2e94c-ff32-4690-b9ad-ed87c16e6988"
-              LastKnownName="IDevice"
+            <classMoniker
+              Id="5d7deb8a-4abe-45b4-8554-9819326d97c0"
+              LastKnownName="BaseDevice"
               LastKnownLocation="ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="7e43e304-55f1-4ea3-b664-cea722ca5450"
+                  Id="0e88f67e-9fbd-4517-a6b0-8ad7a165fe02"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1078,7 +1094,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="c19e660e-1be4-4c7b-a38c-96483c8613e2"
+                  Id="2eff15e5-2e4c-456d-a3ea-820eae90acb4"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1178,6 +1194,14 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="4b5e8418-28fd-4d67-8598-a86121fff839"
+            name="~ICommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1198,39 +1222,29 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         isActiveClass="false">
         <suppliersInternal>
           <interfaceRealization
-            Id="ee814c07-5fb2-4112-b54e-4c277bac6930">
+            Id="2175271a-6006-4cd7-a081-996ec89364ae">
             <interfaceMoniker
               Id="bf4e2729-74ec-4390-8734-e3ce4649f781"
               LastKnownName="ICommand"
               LastKnownLocation="ClassDiagram.uml" />
           </interfaceRealization>
         </suppliersInternal>
-        <generalsInternal>
-          <generalization
-            Id="9c7cfcc1-f1e4-4f40-bf3e-930f3d420607"
-            isSubstitutable="false">
-            <classMoniker
-              Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
-              LastKnownName="Object"
-              LastKnownLocation="ClassDiagram.uml" />
-          </generalization>
-        </generalsInternal>
         <targetEnds>
           <association
-            Id="10950c1e-2611-4917-b015-c852cfa444c9"
+            Id="f47bfb25-1674-4c01-b332-be3a6fcfc970"
             isDerived="false"
             sourceEndRoleName=""
             targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
-            <interfaceMoniker
-              Id="02f2e94c-ff32-4690-b9ad-ed87c16e6988"
-              LastKnownName="IDevice"
+            <classMoniker
+              Id="bf11dec9-1fd2-40c1-8df3-55de43c0baed"
+              LastKnownName="Stereo"
               LastKnownLocation="ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="f81b847e-ddcd-4efd-b225-52ca33de13ca"
+                  Id="aa745460-b7d0-4e76-9b1a-d41150dae75c"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1242,7 +1256,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="d32ab795-1f6c-425e-b554-0cfe8023ada9"
+                  Id="99dd79c9-77c3-4dc4-87bc-14f3e095bdff"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1342,6 +1356,14 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="24d585b3-0a5c-4beb-b5ba-84d2792a2f10"
+            name="~ICommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1354,39 +1376,29 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         isActiveClass="false">
         <suppliersInternal>
           <interfaceRealization
-            Id="abc10b89-ffa7-4935-9f1e-62b4c0da2558">
+            Id="ac20b96c-e889-4add-a023-49691fc242df">
             <interfaceMoniker
               Id="bf4e2729-74ec-4390-8734-e3ce4649f781"
               LastKnownName="ICommand"
               LastKnownLocation="ClassDiagram.uml" />
           </interfaceRealization>
         </suppliersInternal>
-        <generalsInternal>
-          <generalization
-            Id="ba9f61b2-f705-4580-9d14-4ef1a2467479"
-            isSubstitutable="false">
-            <classMoniker
-              Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
-              LastKnownName="Object"
-              LastKnownLocation="ClassDiagram.uml" />
-          </generalization>
-        </generalsInternal>
         <targetEnds>
           <association
-            Id="9e8a7b84-f921-4aca-bdf4-81a495246e22"
+            Id="b3d157d2-c15f-4ac9-96f3-9995801b1304"
             isDerived="false"
             sourceEndRoleName=""
             targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
-            <interfaceMoniker
-              Id="02f2e94c-ff32-4690-b9ad-ed87c16e6988"
-              LastKnownName="IDevice"
+            <classMoniker
+              Id="bf11dec9-1fd2-40c1-8df3-55de43c0baed"
+              LastKnownName="Stereo"
               LastKnownLocation="ClassDiagram.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="6dab140c-69c6-40b3-bdb0-916997dba7f9"
+                  Id="4fe4b82f-2345-4e7a-9388-aa64d416d0e6"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1398,7 +1410,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="865bcf5b-ec5b-438f-90f7-79ba6d56a21f"
+                  Id="14bfa11b-3631-45f4-ae58-35e1c66a8a30"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1498,6 +1510,14 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="fc8aa87b-5f92-4619-aca2-06fbbf816994"
+            name="~ICommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1510,7 +1530,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         isActiveClass="false">
         <suppliersInternal>
           <interfaceRealization
-            Id="195c0317-2c21-47ff-afc2-c81ac57ff13a">
+            Id="66907710-2655-458d-8558-112ce18621c9">
             <interfaceMoniker
               Id="bf4e2729-74ec-4390-8734-e3ce4649f781"
               LastKnownName="ICommand"
@@ -1519,7 +1539,7 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="54edfc31-f0e7-47e0-9065-0eb9acd5e1c4"
+            Id="ce59c82b-94cd-4937-907a-be052865f7f9"
             isSubstitutable="false">
             <classMoniker
               Id="6cf5b861-11bd-41c0-b478-d24eb08145a8"
@@ -1711,6 +1731,14 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="df61da5a-a94f-4be6-8a1d-f92158115f70"
+            name="~ICommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2179,6 +2207,16 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="245d691a-77eb-44c1-bcd7-7c5fcbd12615"
+            name="&lt;&lt;use&gt;&gt;">
+            <enumerationMoniker
+              Id="4b0c9c97-2dc5-4a95-bd1f-f08ca902101d"
+              LastKnownName="CDState"
+              LastKnownLocation="ClassDiagram.uml" />
+          </dependency>
+        </suppliersInternal>
         <generalsInternal>
           <generalization
             Id="e8227f91-d8f7-489e-a7a9-f8e0acc3c8db"
@@ -2356,6 +2394,14 @@ wir das jeweilige command vom slot im LastCommand gespeichert</body>
               LastKnownName="IDevice"
               LastKnownLocation="ClassDiagram.uml" />
           </interfaceRealization>
+          <dependency
+            Id="8627c451-cd09-40be-a34d-129b5fa9255c"
+            name="&lt;&lt;use&gt;&gt;">
+            <enumerationMoniker
+              Id="a79c8b99-f8b8-43dd-9ade-89789f1e2d55"
+              LastKnownName="OnOffState"
+              LastKnownLocation="ClassDiagram.uml" />
+          </dependency>
         </suppliersInternal>
         <generalsInternal>
           <generalization

@@ -76,7 +76,7 @@ commentstyle=\color{dkgreen},       % comment style
 \subsection{Zeitaufwand}
 	\begin {itemize}
 		\item geschätzte Mh: 15
-		\item tatsächlich: Reinhard (7h), Bernhard  (7h)
+		\item tatsächlich: Reinhard (6h), Bernhard  (8h)
 	\end {itemize}
 
 
@@ -90,7 +90,7 @@ Eine Software für eine programmierbare Fernsteuerung soll entworfen werden. Mit
 
 \subsection {Klassendiagramm}
 
-%\includegraphics[angle=90,scale=0.55] {../Klassendiagramm.png}
+\includegraphics[angle=90,scale=0.50] {../Klassendiagramm.png}
 
 \newpage
 \subsection {Komponentenübersicht}
@@ -317,8 +317,26 @@ Sie haben weiters einen Konstruktor dem diese Referenzen mitgegeben werden.
 Hat eine Liste die die Referenzen auf mehrere Kommandos speichert. Der Liste können die Kommandos hinzugefügt werden, aber auch wieder entfernt werden. Es können nur maximal 2 Elemente in der Liste gespeichert werden.
 \\
 
+\subsection {Interface "IDevice"}
+Schnittstellendefiniton. Hat einen virtuellen Destruktor.
+\\
 
+\textbf {Methode "Info": } 
+\newline
+Schnittstelle:
+\newline
+Parameter: ostream\&
+\newline
+Rückgabetyp: void
+\\
 
+\subsection {Klasse "BaseDevice"}
+Speichert den aktuellen und den letzten On-Off-Status. Der Konstruktor setzt beide Statusse auf Off. Die Methoden "TurnOn" und "TurnOff" speichern immer den aktuellen Status und weisen dann den neuen zu. Bei "Undo" wird der letzte Status dem neuen zugewiesen.
+\\
+
+\subsection {Klassen "Heating, TV und Stereo"}
+Die Methode "Info" gibt die Informationen des jeweiligen Objektes entsprechend aus. Die Klasse Stereo definiert zusätzlich die für das CD-Laufwerk benötigten Member und Methoden.
+\\
 
 \newpage
 \section {Source Code}
@@ -327,62 +345,80 @@ Hat eine Liste die die Referenzen auf mehrere Kommandos speichert. Der Liste kö
 %\lstinputlisting[language=C++]{\CodePath Object.cpp}
 %\newpage
 %
-%\lstinputlisting[language=C++]{\CodePath ICar.h}
+%\lstinputlisting[language=C++]{\CodePath Client.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath Client.cpp}
 %\newpage
 %
-%\lstinputlisting[language=C++]{\CodePath ConcreteCar.h}
+%\lstinputlisting[language=C++]{\CodePath RemoteControl.h}
 %\newpage
-%\lstinputlisting[language=C++]{\CodePath ConcreteCar.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath SmallCar.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath SmallCar.cpp}
+%\lstinputlisting[language=C++]{\CodePath RemoteControl.cpp}
 %\newpage
 %
-%\lstinputlisting[language=C++]{\CodePath MiddleRangeCar.h}
+%\lstinputlisting[language=C++]{\CodePath Slot.h}
 %\newpage
-%\lstinputlisting[language=C++]{\CodePath MiddleRangeCar.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath PremiumCar.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath PremiumCar.cpp}
+%\lstinputlisting[language=C++]{\CodePath Slot.cpp}
 %\newpage
 %
-%\lstinputlisting[language=C++]{\CodePath SUV.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath SUV.cpp}
+%\lstinputlisting[language=C++]{\CodePath ICommand.h}
 %\newpage
 %
-%\lstinputlisting[language=C++]{\CodePath Decorator.h}
+%\lstinputlisting[language=C++]{\CodePath NoCommand.h}
 %\newpage
-%\lstinputlisting[language=C++]{\CodePath Decorator.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath Decorator_AirConditioner.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath Decorator_AirConditioner.cpp}
+%\lstinputlisting[language=C++]{\CodePath NoCommand.cpp}
 %\newpage
 %
-%\lstinputlisting[language=C++]{\CodePath Decorator_Navi.h}
+%\lstinputlisting[language=C++]{\CodePath OffCommand.h}
 %\newpage
-%\lstinputlisting[language=C++]{\CodePath Decorator_Navi.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath Decorator_Speedometer.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath Decorator_Speedometer.cpp}
+%\lstinputlisting[language=C++]{\CodePath OffCommand.cpp}
 %\newpage
 %
-%\lstinputlisting[language=C++]{\CodePath Decorator_Xenion.h}
+%\lstinputlisting[language=C++]{\CodePath OnCommand.h}
 %\newpage
-%\lstinputlisting[language=C++]{\CodePath Decorator_Xenion.cpp}
+%\lstinputlisting[language=C++]{\CodePath OnCommand.cpp}
 %\newpage
 %
-%\lstinputlisting[language=C++]{\CodePath CarRental.h}
+%\lstinputlisting[language=C++]{\CodePath CloseCommand.h}
 %\newpage
-%\lstinputlisting[language=C++]{\CodePath CarRental.cpp}
+%\lstinputlisting[language=C++]{\CodePath CloseCommand.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath OpenCommand.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath OpenCommand.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath MacroCommand.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath MacroCommand.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath IDevice.h}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath BaseDevice.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath BaseDevice.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath Heating.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath Heating.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath TV.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath TV.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath Stereo.h}
+%\newpage
+%\lstinputlisting[language=C++]{\CodePath Stereo.cpp}
+%\newpage
+%
+%\lstinputlisting[language=C++]{\CodePath OnOffState.h}
+%
+%\lstinputlisting[language=C++]{\CodePath CDState.h}
 %\newpage
 %
 %\lstinputlisting[language=C++]{\CodePath Main.cpp}
@@ -391,54 +427,7 @@ Hat eine Liste die die Referenzen auf mehrere Kommandos speichert. Der Liste kö
 \section {Testausgaben} 
 
 \begin {verbatim}
-Visual Leak Detector Version 2.2.3 installed.
-Empty testcase with NULL pointer.
-Error in CarRental::Add: no valid pointer
-Error in CarRental::MoveToAvailable: no valid pointer
-Error in CarRental::Reserve: no valid pointer
 
-
-Testcase with single entry
-Add ...done
-GetAvailable ...done
-Reserve ...done
-GetReserved ...done
-PrintReserved ...Small Car: VW Golf - Price: 7500
-Air Conditioner - Price: 1500
-Total price: 9000
-done
-MoveToAvailable ...done
-PrintAvailable ...Small Car: VW Golf - Price: 7500
-Air Conditioner - Price: 1500
-Total price: 9000
-done
-
-
-Testcase with several entries
-Add ...done
-GetAvailable ...done
-Reserve ...done
-GetReserved ...done
-PrintReserved ...Premium Car: Audi R8 - Price: 45000
-Xenion - Price: 3000
-Navi - Price: 2000
-Total price: 50000
-SUV: Toyota RAV4 - Price: 22000
-Total price: 22000
-done
-MoveToAvailable ...done
-PrintAvailable ...Small Car: VW Golf - Price: 7500
-Air Conditioner - Price: 1500
-Total price: 9000
-Middlerange Car: BMW 3 - Price: 16000
-Speedometer - Price: 2500
-Total price: 18500
-SUV: Toyota RAV4 - Price: 22000
-Total price: 22000
-done
-
-
-No memory leaks detected.
 \end {verbatim}
 
 
