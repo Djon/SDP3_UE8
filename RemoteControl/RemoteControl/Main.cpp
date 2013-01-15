@@ -16,8 +16,6 @@
 
 #include "Client.h"
 
-#include <vld.h>
-
 using namespace std;
 
 
@@ -81,8 +79,6 @@ void EmptyProcess()
 
 		cout << "Process";
 		c.Process(s);
-
-		cout << endl << endl;
 	}
 	catch(std::bad_alloc& ex)
 	{
@@ -144,19 +140,19 @@ void NormalTestcase()
 		cout << Input << endl;
 		c.Process(Input);
 
-		Input = "1f";
+		Input = "1o";
 		cout << Input << endl;
 		c.Process(Input);
 
-		Input = "2f";
+		Input = "2o";
 		cout << Input << endl;
 		c.Process(Input);
 
-		Input = "6f";
+		Input = "6o";
 		cout << Input << endl;
 		c.Process(Input);
 
-		Input = "4f";
+		Input = "4o";
 		cout << Input << endl;
 		c.Process(Input);	
 
@@ -193,6 +189,8 @@ int main()
 	EmptyTestcase();
 	EmptyProcessInfo();
 	EmptyProcess();
+	cout << endl << endl;
+
 	NormalTestcase();
 
 	return 0;

@@ -95,16 +95,20 @@ void Client::Process(std::string& Input, std::ostream& stream)
 		} 
 		else if (Input.size() >= 2)
 		{
+			bool InputValid = false;
+
 			for (int i=0; i<MaxSlots; ++i)
 			{
-				if (Input[0] == (char)(i+1))
+				if (Input[0] == (char)(i+'1'))
 				{
 					if (Input[1] == 'o')
 					{
+						InputValid = true;
 						mRemote.OnButtonPressed(i+1);
 					}
 					else if (Input[1] == 'f')
 					{
+						InputValid = true;
 						mRemote.OffButtonPressed(i+1);
 					}
 					else
@@ -112,10 +116,10 @@ void Client::Process(std::string& Input, std::ostream& stream)
 						throw std::string("Client::Process: Input is not valid");
 					}
 				}
-				else
-				{
-					throw std::string("Client::Process: Input is not valid");
-				}
+			}
+			if (!InputValid)
+			{
+				throw std::string("Client::Process: Input is not valid");
 			}
 		} 
 		else
