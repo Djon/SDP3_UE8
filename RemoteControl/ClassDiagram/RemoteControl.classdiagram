@@ -325,6 +325,9 @@
           <operation Id="f180153a-9266-472a-8200-8b5c78768402" name="RemoteControl" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="d5653871-4780-451b-b8c0-9624fd9e0cb0" />
           </operation>
+          <operation Id="c4a7bd9a-f551-458a-933e-3f13d963d177" name="~RemoteControl" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="438cddbd-cfae-4540-b39b-b0bb324b6b4d" />
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -1041,6 +1044,9 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
+          </operation>
+          <operation Id="2a158f4f-9a31-4f9a-b3e7-3f600b99c25f" name="~Slot" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a719782b-2eac-40c1-a0f4-b0a5d208ed12" />
           </operation>
         </ownedOperationsInternal>
       </class>

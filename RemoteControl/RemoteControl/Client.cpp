@@ -8,24 +8,6 @@
 #include <algorithm>
 #include "Client.h"
 
-Client::Client()
-{
-	try 
-	{
-		RemoteControl* mRemote = new RemoteControl;
-	}
-	catch(std::bad_alloc& ex)
-	{
-		throw(ex);
-	}
-}
-
-
-Client::~Client()
-{
-	delete mRemote;
-}
-
 void Client::AddDevice(IDevice* Device, size_t SlotNumber, ICommand* OnCommand, ICommand* OffCommand)
 {
 	try
@@ -48,7 +30,7 @@ void Client::AddDevice(IDevice* Device, size_t SlotNumber, ICommand* OnCommand, 
 		}
 
 		mDevices.push_back(Device);
-		mRemote->ProgramSlot(SlotNumber,OnCommand,OffCommand);
+		mRemote.ProgramSlot(SlotNumber,OnCommand,OffCommand);
 	}
 	catch(std::string const& ex)
 	{
@@ -92,7 +74,7 @@ void Client::PrintInterface()
 	std::cout << "u...undo" << std::endl;
 	std::cout << "i...output device info" << std::endl;
 	std::cout << DivLine << std::endl;
-	std::cout << "input slot number and on(’o’) or off(’f’):" << std::endl;
+	std::cout << "input slot number and on('o') or off('f'):" << std::endl;
 }
 
 void Client::Process(std::string& Input, std::ostream& stream)
@@ -105,7 +87,7 @@ void Client::Process(std::string& Input, std::ostream& stream)
 		}
 		if (Input[0] == 'u')
 		{
-			mRemote->UndoButtonPressed();
+			mRemote.UndoButtonPressed();
 		} 
 		else if (Input[0] == 'i')
 		{
@@ -119,11 +101,11 @@ void Client::Process(std::string& Input, std::ostream& stream)
 				{
 					if (Input[1] == 'o')
 					{
-						mRemote->OnButtonPressed(i+1);
+						mRemote.OnButtonPressed(i+1);
 					}
 					else if (Input[1] == 'f')
 					{
-						mRemote->OffButtonPressed(i+1);
+						mRemote.OffButtonPressed(i+1);
 					}
 					else
 					{

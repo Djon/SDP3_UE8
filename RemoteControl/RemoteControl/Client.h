@@ -23,19 +23,13 @@ class Client :
 	public Object
 {
 public:
-	//CTor
-	Client();
-
-	//DTor
-	~Client();
-
 	void AddDevice(IDevice* Device, size_t SlotNumber, ICommand* OnCommand, ICommand* OffCommand);
 	void PrintDeviceInfo(std::ostream& stream);
 	void PrintInterface();
 	void Process(std::string& Input, std::ostream& stream = std::cout);
 private:
 	TDevices mDevices;
-	RemoteControl* mRemote;
+	RemoteControl mRemote;
 };
 
 #endif

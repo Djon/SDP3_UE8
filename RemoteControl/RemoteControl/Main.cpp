@@ -25,24 +25,154 @@ void EmptyTestcase()
 {
 	try
 	{
-	cout << "Testcase0: Empty testcase with NULL pointer." << endl;
+		cout << "Testcase0: Empty testcase with NULL pointer." << endl;
 
-	Client c;
-	string s(" ");
+		Client c;
 
-	cout << "Print Interface:" << endl;
-	c.PrintInterface();
+		cout << "Print Interface:" << endl;
+		c.PrintInterface();
 
-	cout << "Add Device:" << endl;
-	c.AddDevice(0,0,0,0);
+		cout << "Add Device:" << endl;
+		c.AddDevice(0,0,0,0);
+	}
+	catch(std::bad_alloc& ex)
+	{
+		cout << ex.what() << endl;
+	}
+	catch(std::string const& ex)
+	{
+		cout << ex << endl;
+	}
+	catch(...)
+	{
+		cout << "Unhandled exception occured";
+	}
+}
 
-	cout << "Print Device Info:" << endl;
-	c.PrintDeviceInfo(cout);
+void EmptyProcessInfo()
+{
+	try
+	{
+		Client c;
 
-	cout << "Process";
-	c.Process(s);
+		cout << "Print Device Info:" << endl;
+		c.PrintDeviceInfo(cout);
+	}
+	catch(std::bad_alloc& ex)
+	{
+		cout << ex.what() << endl;
+	}
+	catch(std::string const& ex)
+	{
+		cout << ex << endl;
+	}
+	catch(...)
+	{
+		cout << "Unhandled exception occured";
+	}
+}
 
-	cout << endl << endl;
+void EmptyProcess()
+{
+	try
+	{
+		Client c;
+		string s(" ");
+
+		cout << "Process";
+		c.Process(s);
+
+		cout << endl << endl;
+	}
+	catch(std::bad_alloc& ex)
+	{
+		cout << ex.what() << endl;
+	}
+	catch(std::string const& ex)
+	{
+		cout << ex << endl;
+	}
+	catch(...)
+	{
+		cout << "Unhandled exception occured";
+	}
+}
+
+void NormalTestcase()
+{
+	try
+	{
+		cout << "Testcase1: Normal testcase." << endl;
+
+		Client c;
+		string Input("i");
+
+		cout << "Creating Devices:" << endl;
+		Stereo stereo;
+		Heating heater;
+		TV tv;
+
+		cout << "Creating Commands:" << endl;
+		OnCommand	 onCommandStereo(&stereo);
+		OpenCommand  openCommandStereo(&stereo);
+		OffCommand	 offCommandStereo(&stereo);
+		CloseCommand closeCommandStereo(&stereo);
+
+		MacroCommand macroCommandStereoOnOpen;
+		macroCommandStereoOnOpen.Add(&onCommandStereo);
+		macroCommandStereoOnOpen.Add(&openCommandStereo);
+
+		MacroCommand macroCommandStereoOffClose;
+		macroCommandStereoOffClose.Add(&offCommandStereo);
+		macroCommandStereoOffClose.Add(&closeCommandStereo);
+
+		OnCommand onCommandHeater(&heater);
+		OffCommand ofCommandHeater(&heater);
+
+		OnCommand onCommandTV(&tv);
+		OffCommand ofCommandTV(&tv);
+
+		cout << "Adding devices to client:" << endl;
+		c.AddDevice(&stereo,4,&macroCommandStereoOnOpen,&macroCommandStereoOffClose);
+		c.AddDevice(&heater,2,&onCommandHeater,&ofCommandHeater);
+		c.AddDevice(&tv,1,&onCommandTV,&ofCommandTV);
+
+		cout << "Print Interface:" << endl;
+		c.PrintInterface();
+
+		cout << "Process:" << endl;
+		cout << Input << endl;
+		c.Process(Input);
+
+		Input = "1f";
+		cout << Input << endl;
+		c.Process(Input);
+
+		Input = "2f";
+		cout << Input << endl;
+		c.Process(Input);
+
+		Input = "6f";
+		cout << Input << endl;
+		c.Process(Input);
+
+		Input = "4f";
+		cout << Input << endl;
+		c.Process(Input);	
+
+		Input = "i";
+		cout << Input << endl;
+		c.Process(Input);
+
+		Input = "u";
+		cout << Input << endl;
+		c.Process(Input);
+
+		Input = "i";
+		cout << Input << endl;
+		c.Process(Input);
+
+		cout << endl << endl;
 	}
 	catch(std::bad_alloc& ex)
 	{
@@ -61,69 +191,9 @@ void EmptyTestcase()
 int main()
 {
 	EmptyTestcase();
-
-	/*//statische Variante
-	Stereo stereo;
-	
-	OnCommand	 onCommandStereo(&stereo);
-	OpenCommand  openCommandStereo(&stereo);
-	OffCommand	 offCommandStereo(&stereo);
-	CloseCommand closeCommandStereo(&stereo);
-
-	MacroCommand macroCommandStereoOnOpen;
-	macroCommandStereoOnOpen.Add(&onCommandStereo);
-	macroCommandStereoOnOpen.Add(&openCommandStereo);
-
-	MacroCommand macroCommandStereoOffClose;
-	macroCommandStereoOffClose.Add(&offCommandStereo);
-	macroCommandStereoOffClose.Add(&closeCommandStereo);
-
-	stereo.Info(cout);
-	macroCommandStereoOnOpen.Execute();
-	stereo.Info(cout);
-	macroCommandStereoOnOpen.Undo();
-	stereo.Info(cout);
-	macroCommandStereoOnOpen.Execute();
-	stereo.Info(cout);
-	macroCommandStereoOffClose.Execute();
-	stereo.Info(cout);
-	macroCommandStereoOffClose.Undo();
-	stereo.Info(cout);*/
-
-	/*
-	andere Variante: dynamisch
-
-	Stereo*     stereo2 = new Stereo;	//kein BaseDevice*
-	BaseDevice* stereo1 = stereo2;		//braucht man später (vl.)
-
-
-	ICommand* onCommandStereo	 = new OnCommand(stereo1);
-	ICommand* offCommandStereo	 = new OffCommand(stereo1);
-	ICommand* openCommandStereo	 = new OpenCommand(stereo2);
-	ICommand* closeCommandStereo = new CloseCommand(stereo2);
-	
-	MacroCommand* macroCommandOnOpen  = new MacroCommand;	//kein ICommand*
-	ICommand*	  iMacroCommandOnOpen =	macroCommandOnOpen;	//braucht man später (vl.)
-	macroCommandOnOpen->Add(onCommandStereo);
-	macroCommandOnOpen->Add(openCommandStereo);
-
-	macroCommandOnOpen->Execute();
-	macroCommandOnOpen->Undo();
-
-
-
-	delete heating;
-	delete tv;
-	delete stereo1;
-	delete stereo2;
-
-	delete onCommandStereo;
-	delete offCommandStereo;
-	delete openCommandStereo;
-	delete closeCommandStereo;
-	
-	delete macroCommandOnOpen;
-	*/
+	EmptyProcessInfo();
+	EmptyProcess();
+	NormalTestcase();
 
 	return 0;
 }

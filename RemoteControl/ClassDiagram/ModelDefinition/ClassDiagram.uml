@@ -692,6 +692,14 @@
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false" />
+          <operation
+            Id="438cddbd-cfae-4540-b39b-b0bb324b6b4d"
+            name="~RemoteControl"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2018,6 +2026,14 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="a719782b-2eac-40c1-a0f4-b0a5d208ed12"
+            name="~Slot"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -2596,6 +2612,11 @@
       <undefinedType
         Id="d6bb54f8-459e-4880-b5a0-fd4f217d0c85"
         name="list&lt;ICommand*&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="66248cf7-8d6e-48ec-a03f-9494a0b3bab6"
+        name="string" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
