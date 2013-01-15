@@ -376,45 +376,36 @@ Die Methode "Info" gibt die Informationen des jeweiligen Objektes entsprechend a
 \newpage
 
 \lstinputlisting[language=C++]{\CodePath ICommand.h}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath NoCommand.h}
 \newpage
 \lstinputlisting[language=C++]{\CodePath NoCommand.cpp}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath OffCommand.h}
 \newpage
 \lstinputlisting[language=C++]{\CodePath OffCommand.cpp}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath OnCommand.h}
 \newpage
 \lstinputlisting[language=C++]{\CodePath OnCommand.cpp}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath CloseCommand.h}
 \newpage
 \lstinputlisting[language=C++]{\CodePath CloseCommand.cpp}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath OpenCommand.h}
 \newpage
 \lstinputlisting[language=C++]{\CodePath OpenCommand.cpp}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath MacroCommand.h}
-\newpage
 \lstinputlisting[language=C++]{\CodePath MacroCommand.cpp}
 \newpage
 
 \lstinputlisting[language=C++]{\CodePath IDevice.h}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath BaseDevice.h}
 \newpage
 \lstinputlisting[language=C++]{\CodePath BaseDevice.cpp}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath Heating.h}
 \newpage
@@ -422,13 +413,12 @@ Die Methode "Info" gibt die Informationen des jeweiligen Objektes entsprechend a
 \newpage
 
 \lstinputlisting[language=C++]{\CodePath TV.h}
-\newpage
 \lstinputlisting[language=C++]{\CodePath TV.cpp}
 
+\newpage
 \lstinputlisting[language=C++]{\CodePath Stereo.h}
 \newpage
 \lstinputlisting[language=C++]{\CodePath Stereo.cpp}
-\newpage
 
 \lstinputlisting[language=C++]{\CodePath OnOffState.h}
 
@@ -441,7 +431,72 @@ Die Methode "Info" gibt die Informationen des jeweiligen Objektes entsprechend a
 \section {Testausgaben} 
 
 \begin {verbatim}
+Visual Leak Detector Version 2.2.3 installed.
+Testcase0: Empty testcase with NULL pointer.
+Print Interface:
+Remote control:
+-----------------------
+1...empty
+2...empty
+3...empty
+4...empty
+5...empty
+6...empty
+u...undo
+i...output device info
+-----------------------
+input slot number and on('o') or off('f'):
+Add Device:
+Client::AddDevice: Device is a null pointer
+Print Device Info:
+Devices:
+-----------------------
+ProcessClient::Process: Input is not valid
 
+Testcase1: Normal testcase.
+Creating Devices:
+Creating Commands:
+Adding devices to client:
+Print Interface:
+Remote control:
+-----------------------
+1...empty
+2...TV
+3...Heating
+4...empty
+5...Stereo
+6...empty
+u...undo
+i...output device info
+-----------------------
+input slot number and on('o') or off('f'):
+Process:
+i
+Devices:
+-----------------------
+TV is Off
+Heating is Off
+Stereo is Off CD is closed
+1o
+2o
+6o
+Can not execute: No Command
+4o
+i
+Devices:
+-----------------------
+TV is On
+Heating is On
+Stereo is On CD is opened
+u
+i
+Devices:
+-----------------------
+TV is On
+Heating is On
+Stereo is Off CD is closed
+
+No memory leaks detected.
 \end {verbatim}
 
 

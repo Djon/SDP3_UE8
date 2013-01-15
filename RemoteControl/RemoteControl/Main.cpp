@@ -16,6 +16,8 @@
 
 #include "Client.h"
 
+#include <vld.h>
+
 using namespace std;
 
 
@@ -169,6 +171,11 @@ void NormalTestcase()
 		c.Process(Input);
 
 		cout << endl << endl;
+
+		delete onCommandStereo;
+		delete offCommandStereo;
+		delete openCommandStereo;
+		delete closeCommandStereo;
 	}
 	catch(std::bad_alloc& ex)
 	{
