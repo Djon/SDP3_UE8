@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a2ba65cc-1dc0-4bff-9c6c-aa558af37ffd" name="RemoteControl" linkedPackageId="85c75c38-7377-41ee-92a7-18a336d47447" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a2ba65cc-1dc0-4bff-9c6c-aa558af37ffd" name="RemoteControl" linkedPackageId="85c75c38-7377-41ee-92a7-18a336d47447" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="dc7e0eb7-c6ee-4ee7-8c32-9a8bc5e2e920" name="Object" isAbstract="true" isLeaf="false" isActiveClass="false">
@@ -77,7 +77,7 @@
           <property Id="e8b3e152-1a05-43db-baed-ed55a1c8d68c" name="mDevices" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="6eb482a7-95a7-4612-a786-cefa229ab4e5" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="5aed622a-5897-490b-bb4c-1761520ad8de" LastKnownName="list&lt;IDevice*&gt;" />
+              <referencedTypeMoniker Id="a6e6eae0-c6a3-4aa7-b78c-8ebab9276037" LastKnownName="vector&lt;IDevice*&gt;" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -173,6 +173,9 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
+          </operation>
+          <operation Id="8311d885-2ac8-493a-b815-e8af02cbcb52" name="Client" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="eb00e431-0ae2-46cc-8671-0b3aa6de7ece" />
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -1096,17 +1099,15 @@
           <operation Id="4da5a119-bcc0-4593-b542-d9aa6f2d9c82" name="~IDevice" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="54057c33-d496-4ea8-82dd-4ec27e875d3c" />
           </operation>
+          <operation Id="cff5f269-ac0f-4f59-9cb6-3626bd2eae87" name="GetName : string" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="5d6fc6f5-abb2-435c-9ba2-a90b9c6f255f" />
+          </operation>
         </ownedOperations>
       </Interface>
     </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
       <referencedType Id="a120844e-7d67-49d0-939d-c3c830e7e45c" name="void" isAbstract="false" isLeaf="false" cachedFullName="void">
         <elementDefinition Id="1bc556ea-21ed-4164-9eea-7d575c8cde87" />
-      </referencedType>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <referencedType Id="5aed622a-5897-490b-bb4c-1761520ad8de" name="list&lt;IDevice*&gt;" isAbstract="false" isLeaf="false" cachedFullName="list&lt;IDevice*&gt;">
-        <elementDefinition Id="30eddde6-af15-4952-b05f-76232b3f9e83" />
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
@@ -1136,6 +1137,9 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
+          </operation>
+          <operation Id="09e1203e-3c77-4203-bcb0-67dafe8cf908" name="GetName : string" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="22e54455-1b50-4bdb-a99b-ed752ff0e65a" />
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -1172,6 +1176,9 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
+          </operation>
+          <operation Id="ad061e82-5ae3-485f-979d-f375b014510f" name="GetName : string" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="af5a8506-b8bc-4e00-bbd3-1d6b763d7fde" />
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -1267,6 +1274,9 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
+          </operation>
+          <operation Id="21aa3025-3dda-40aa-9d99-11081f48a029" name="GetName : string" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="dec497b2-9ae7-429c-abcd-0571760ebb9a" />
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -1370,6 +1380,9 @@
           <operation Id="3f0ec311-f43a-4d85-8213-05ad0993e2b7" name="BaseDevice" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="cdc813ac-5a61-40be-a8ba-8f5a5a384e96" />
           </operation>
+          <operation Id="c3fefd2d-57cd-4c61-8ed6-3a428ab11025" name="GetName : string" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="744ae3d3-695e-4a75-b2e2-3f5bc4034016" />
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -1411,6 +1424,11 @@
     <packageHasNamedElement>
       <referencedType Id="d719b6fb-899e-4899-b11e-560b100fadcf" name="list&lt;ICommand*&gt;" isAbstract="false" isLeaf="false" cachedFullName="list&lt;ICommand*&gt;">
         <elementDefinition Id="d6bb54f8-459e-4880-b5a0-fd4f217d0c85" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="a6e6eae0-c6a3-4aa7-b78c-8ebab9276037" name="vector&lt;IDevice*&gt;" isAbstract="false" isLeaf="false" cachedFullName="vector&lt;IDevice*&gt;">
+        <elementDefinition Id="7c9f951f-0480-4121-86fd-f37c4a0866d5" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

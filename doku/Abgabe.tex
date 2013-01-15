@@ -76,7 +76,7 @@ commentstyle=\color{dkgreen},       % comment style
 \subsection{Zeitaufwand}
 	\begin {itemize}
 		\item geschätzte Mh: 15
-		\item tatsächlich: Reinhard (6h), Bernhard  (8h)
+		\item tatsächlich: Reinhard (8h), Bernhard  (8h)
 	\end {itemize}
 
 
@@ -157,6 +157,13 @@ Abstrakte Basisklasse aller Klassen. Von ihr werden alle anderen Klassen abgelei
 
 \subsection {Klasse "Client"}
 Hat eine Liste die die Geräte verwaltet und einen Member der eine Referenz auf die Fernsteuerung speichert.
+\\
+
+\textbf {Konstruktor "Client": } 
+\newline
+Schnittstelle:
+\newline
+Verkleinert die Größe des Vektors auf 6 und initialisiert die Pointer mit Null.
 \\
 
 \textbf {Methode "AddDevice": } 
@@ -318,7 +325,7 @@ Hat eine Liste die die Referenzen auf mehrere Kommandos speichert. Der Liste kö
 \\
 
 \subsection {Interface "IDevice"}
-Schnittstellendefiniton. Hat einen virtuellen Destruktor.
+Schnittstellendefiniton. Hat einen virtuellen Destruktor. Die vorgegebene Schnittstelle wurde um die Methode "GetName" erweitert, da diese für "PrintInterface" benötigt wird.
 \\
 
 \textbf {Methode "Info": } 
@@ -330,99 +337,106 @@ Parameter: ostream\&
 Rückgabetyp: void
 \\
 
+\textbf {Methode "GetName": } 
+\newline
+Schnittstelle:
+\newline
+Rückgabetyp: string
+\\
+
 \subsection {Klasse "BaseDevice"}
 Speichert den aktuellen und den letzten On-Off-Status. Der Konstruktor setzt beide Statusse auf Off. Die Methoden "TurnOn" und "TurnOff" speichern immer den aktuellen Status und weisen dann den neuen zu. Bei "Undo" wird der letzte Status dem neuen zugewiesen.
+Die Methode "GetName" ist abstrakt und wird in den Unterklassen überschrieben.
 \\
 
 \subsection {Klassen "Heating, TV und Stereo"}
-Die Methode "Info" gibt die Informationen des jeweiligen Objektes entsprechend aus. Die Klasse Stereo definiert zusätzlich die für das CD-Laufwerk benötigten Member und Methoden.
+Die Methode "Info" gibt die Informationen des jeweiligen Objektes entsprechend aus. Die Klasse Stereo definiert zusätzlich die für das CD-Laufwerk benötigten Member und Methoden. In der Methode "GetName" werden die Namen der Klassen entsprechend returniert.
 \\
 
 \newpage
 \section {Source Code}
 
-%\lstinputlisting[language=C++]{\CodePath Object.h}
-%\lstinputlisting[language=C++]{\CodePath Object.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath Client.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath Client.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath RemoteControl.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath RemoteControl.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath Slot.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath Slot.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath ICommand.h}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath NoCommand.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath NoCommand.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath OffCommand.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath OffCommand.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath OnCommand.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath OnCommand.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath CloseCommand.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath CloseCommand.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath OpenCommand.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath OpenCommand.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath MacroCommand.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath MacroCommand.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath IDevice.h}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath BaseDevice.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath BaseDevice.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath Heating.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath Heating.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath TV.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath TV.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath Stereo.h}
-%\newpage
-%\lstinputlisting[language=C++]{\CodePath Stereo.cpp}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath OnOffState.h}
-%
-%\lstinputlisting[language=C++]{\CodePath CDState.h}
-%\newpage
-%
-%\lstinputlisting[language=C++]{\CodePath Main.cpp}
-%\newpage
+\lstinputlisting[language=C++]{\CodePath Object.h}
+\lstinputlisting[language=C++]{\CodePath Object.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath Client.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath Client.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath RemoteControl.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath RemoteControl.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath Slot.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath Slot.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath ICommand.h}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath NoCommand.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath NoCommand.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath OffCommand.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath OffCommand.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath OnCommand.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath OnCommand.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath CloseCommand.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath CloseCommand.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath OpenCommand.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath OpenCommand.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath MacroCommand.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath MacroCommand.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath IDevice.h}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath BaseDevice.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath BaseDevice.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath Heating.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath Heating.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath TV.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath TV.cpp}
+
+\lstinputlisting[language=C++]{\CodePath Stereo.h}
+\newpage
+\lstinputlisting[language=C++]{\CodePath Stereo.cpp}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath OnOffState.h}
+
+\lstinputlisting[language=C++]{\CodePath CDState.h}
+\newpage
+
+\lstinputlisting[language=C++]{\CodePath Main.cpp}
+\newpage
 
 \section {Testausgaben} 
 
