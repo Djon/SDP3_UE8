@@ -24,8 +24,8 @@ void Slot::ClickedOn()
 
 void Slot::SetCommands(ICommand* OnCommand, ICommand* OffCommand)
 {
-	mOnCommand = OnCommand;
-	mOffCommand = OffCommand;
+	delete mOnCommand; mOnCommand = OnCommand;
+	delete mOffCommand; mOffCommand = OffCommand;
 }
 
 ICommand* Slot::GetOnCommand() const

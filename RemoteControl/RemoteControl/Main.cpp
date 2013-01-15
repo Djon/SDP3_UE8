@@ -109,29 +109,29 @@ void NormalTestcase()
 		TV tv;
 
 		cout << "Creating Commands:" << endl;
-		OnCommand	 onCommandStereo(&stereo);
-		OpenCommand  openCommandStereo(&stereo);
-		OffCommand	 offCommandStereo(&stereo);
-		CloseCommand closeCommandStereo(&stereo);
+		ICommand* onCommandStereo = new OnCommand(&stereo);
+		ICommand* openCommandStereo = new OpenCommand(&stereo);
+		ICommand* offCommandStereo = new OffCommand(&stereo);
+		ICommand* closeCommandStereo = new CloseCommand(&stereo);
 
-		MacroCommand macroCommandStereoOnOpen;
-		macroCommandStereoOnOpen.Add(&onCommandStereo);
-		macroCommandStereoOnOpen.Add(&openCommandStereo);
+		MacroCommand* macroCommandStereoOnOpen = new MacroCommand;
+		macroCommandStereoOnOpen->Add(onCommandStereo);
+		macroCommandStereoOnOpen->Add(openCommandStereo);
 
-		MacroCommand macroCommandStereoOffClose;
-		macroCommandStereoOffClose.Add(&offCommandStereo);
-		macroCommandStereoOffClose.Add(&closeCommandStereo);
+		MacroCommand* macroCommandStereoOffClose = new MacroCommand;
+		macroCommandStereoOffClose->Add(offCommandStereo);
+		macroCommandStereoOffClose->Add(closeCommandStereo);
 
-		OnCommand onCommandHeater(&heater);
-		OffCommand ofCommandHeater(&heater);
+		ICommand* onCommandHeater = new OnCommand(&heater);
+		ICommand* ofCommandHeater = new OffCommand(&heater);
 
-		OnCommand onCommandTV(&tv);
-		OffCommand ofCommandTV(&tv);
+		ICommand* onCommandTV = new OnCommand(&tv);
+		ICommand* ofCommandTV = new OffCommand(&tv);
 
 		cout << "Adding devices to client:" << endl;
-		c.AddDevice(&stereo,4,&macroCommandStereoOnOpen,&macroCommandStereoOffClose);
-		c.AddDevice(&heater,2,&onCommandHeater,&ofCommandHeater);
-		c.AddDevice(&tv,1,&onCommandTV,&ofCommandTV);
+		c.AddDevice(&stereo,4,macroCommandStereoOnOpen,macroCommandStereoOffClose);
+		c.AddDevice(&heater,2,onCommandHeater,ofCommandHeater);
+		c.AddDevice(&tv,1,onCommandTV,ofCommandTV);
 
 		cout << "Print Interface:" << endl;
 		c.PrintInterface();
