@@ -8,6 +8,11 @@
 #include <algorithm>
 #include "Client.h"
 
+Client::Client()
+{
+	mDevices.resize(MaxSlots,0);
+}
+
 void Client::AddDevice(IDevice* Device, size_t SlotNumber, ICommand* OnCommand, ICommand* OffCommand)
 {
 	try
@@ -29,7 +34,7 @@ void Client::AddDevice(IDevice* Device, size_t SlotNumber, ICommand* OnCommand, 
 			throw std::string("Client::AddDevice: OffCommand is a null pointer");
 		}
 
-		mDevices.push_back(Device);
+		mDevices[SlotNumber] = Device;
 		mRemote.ProgramSlot(SlotNumber,OnCommand,OffCommand);
 	}
 	catch(std::string const& ex)
@@ -52,7 +57,10 @@ void Client::PrintDeviceInfo(std::ostream& stream)
 
 		std::for_each(mDevices.begin(),mDevices.end(),[&](IDevice* d)
 		{
-			d->Info(stream);
+			if (d != 0)
+			{
+				d->Info(stream);
+			}
 		});
 	}
 	catch(std::string const& ex)
@@ -65,12 +73,13 @@ void Client::PrintInterface()
 {
 	std::cout << "Remote control:" << std::endl;
 	std::cout << DivLine << std::endl;
-	std::cout << "1...TV" << std::endl;
-	std::cout << "2...Heating" << std::endl;
-	std::cout << "3...empty" << std::endl;
-	std::cout << "4...Stereo" << std::endl;
-	std::cout << "5...empty" << std::endl;
-	std::cout << "6...empty" << std::endl;
+
+	for (int i=0; i<MaxSlots; ++i)
+	{
+		std::cout << i+1 << "...";
+		mDevices[i] != 0 ? std::cout << mDevices[i]->GetName() : std::cout << "empty";
+		std::cout << std::endl;
+	}
 	std::cout << "u...undo" << std::endl;
 	std::cout << "i...output device info" << std::endl;
 	std::cout << DivLine << std::endl;

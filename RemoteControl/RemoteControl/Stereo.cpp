@@ -56,3 +56,8 @@ void Stereo::UndoCD()
 {
 	mDriveState = mLastDriveState;
 }
+
+std::string Stereo::GetName() const
+{
+	return "Stereo";
+}

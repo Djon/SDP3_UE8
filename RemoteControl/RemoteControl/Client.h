@@ -8,14 +8,14 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <list>
+#include <vector>
 #include <iostream>
 #include <string>
 #include "Object.h"
 #include "RemoteControl.h"
 #include "IDevice.h"
 
-typedef std::list<IDevice*> TDevices;
+typedef std::vector<IDevice*> TDevices;
 
 std::string const DivLine("-----------------------");
 
@@ -23,6 +23,9 @@ class Client :
 	public Object
 {
 public:
+	//CTor
+	Client();
+
 	void AddDevice(IDevice* Device, size_t SlotNumber, ICommand* OnCommand, ICommand* OffCommand);
 	void PrintDeviceInfo(std::ostream& stream);
 	void PrintInterface();

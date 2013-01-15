@@ -25,3 +25,8 @@ void Heating::Info(std::ostream& stream)
 		stream << "Heating is Off" << std::endl;
 	}
 }
+
+std::string Heating::GetName() const
+{
+	return "Heating";
+}

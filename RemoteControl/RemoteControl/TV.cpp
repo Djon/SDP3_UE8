@@ -25,3 +25,8 @@ void TV::Info(std::ostream& stream)
 		stream << "TV is Off" << std::endl;
 	}
 }
+
+std::string TV::GetName() const
+{
+	return "TV";
+}

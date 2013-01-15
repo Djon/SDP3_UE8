@@ -15,6 +15,7 @@ class TV :
 {
 public:
 	void Info(std::ostream& stream);
+	std::string GetName() const;
 };
 
 #endif

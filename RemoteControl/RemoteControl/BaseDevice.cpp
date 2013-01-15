@@ -7,6 +7,10 @@
 
 #include "BaseDevice.h"
 
+BaseDevice::BaseDevice() 
+	: mState(eOff), mLastState(eOff) 
+{}
+
 void BaseDevice::TurnOff()
 {
 	mLastState = mState;

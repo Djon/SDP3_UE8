@@ -9,12 +9,14 @@
 #define IDEVICE_H
 
 #include <fstream>
+#include <string>
 
 class IDevice
 {
 public:
 	virtual ~IDevice(){};
 	virtual void Info(std::ostream& stream) = 0;
+	virtual std::string GetName() const = 0;
 };
 
 #endif

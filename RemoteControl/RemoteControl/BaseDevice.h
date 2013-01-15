@@ -17,12 +17,12 @@ class BaseDevice :
 	public IDevice
 {
 public:
-	BaseDevice() : mState(eOff), mLastState(eOff) {}
+	BaseDevice();
 	void Info(std::ostream& stream) = 0;
 	void TurnOff();
 	void TurnOn();
 	void UndoAction();
-
+	std::string GetName() const = 0;
 protected:
 	OnOffState mState;
 

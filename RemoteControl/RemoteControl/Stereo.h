@@ -19,7 +19,7 @@ public:
 	void OpenCD();
 	void CloseCD();
 	void UndoCD();
-	
+	std::string GetName() const;
 private:
 	CDState mDriveState;
 	CDState mLastDriveState;
